@@ -74,10 +74,3 @@ footer:
     name: University of Trento
     url: https://www.unitn.it/
     weight: 20
-
-  - name: Legal
-    weight: 40
-  - parent: Legal
-    name: Privacy Policy
-    url: /privacy/
-    weight: 10

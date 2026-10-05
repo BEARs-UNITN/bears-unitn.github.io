@@ -12,9 +12,9 @@ baseURL: 'https://bears-of-unitn.github.io/'
 ############################
 
 cascade:
-  # Blog post options
+  # News post options
   - target:
-      path: /blog/**
+      path: /post/**
       kind: page
     pager: true
     editable: true
@@ -29,12 +29,6 @@ cascade:
     header:
       navbar:
         enable: true
-  # Blog section options
-  - target:
-      path: /blog/*
-      kind: section
-    # Set the listing view
-    view: date-title-summary
 
 ############################
 ## LANGUAGE
