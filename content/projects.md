@@ -22,7 +22,7 @@ sections:
         text: All repositories
         url: /code/
       count: 4
-      exclude: [bears.github.io, bear.github.io]
+      exclude: [bears-unitn.github.io, bear.github.io]
     design:
       spacing:
         padding: ["0", 0, "7rem", 0]
