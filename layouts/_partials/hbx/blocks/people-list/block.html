@@ -1,0 +1,73 @@
+{{/* BEARLab: compact people list grouped by user_groups (data/authors/*.yaml) */}}
+
+{{ $page := .wcPage }}
+{{ $block := .wcBlock }}
+{{ $content := $block.content | default dict }}
+
+{{ $authors := partialCached "functions/get_authors_data" $page site.Language.Lang }}
+{{ $profiles := slice }}
+{{ range $slug, $_ := $authors }}
+  {{ $profiles = $profiles | append (partial "functions/get_author_profile" (dict "slug" $slug)) }}
+{{ end }}
+
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+  <header class="max-w-2xl mb-16">
+    {{ with $content.subtitle }}
+    <p class="eyebrow mono mb-4 text-xs font-medium uppercase tracking-[0.14em] text-primary-700 dark:text-primary-300">{{ . }}</p>
+    {{ end }}
+    {{ with $content.title }}
+    <h1 class="text-4xl sm:text-5xl font-medium tracking-tight text-gray-900 dark:text-white">{{ . }}</h1>
+    {{ end }}
+    {{ with $content.text }}
+    <p class="mt-5 text-lg text-gray-600 dark:text-gray-400">{{ . | $page.RenderString }}</p>
+    {{ end }}
+  </header>
+
+  {{ range $group := $content.user_groups }}
+    {{ $members := slice }}
+    {{ range $profiles }}
+      {{ if in .user_groups $group }}
+        {{ $family := .name_family | default (index (last 1 (split .title " ")) 0) }}
+        {{ $members = $members | append (dict "p" . "key" (lower $family)) }}
+      {{ end }}
+    {{ end }}
+
+    {{ if $members }}
+    <section class="mb-14 last:mb-0">
+      <h2 class="eyebrow mono flex items-center gap-4 mb-8 text-xs font-medium uppercase tracking-[0.14em] text-primary-700 dark:text-primary-300">
+        {{ $group }}
+        <span class="flex-1 h-px bg-gray-200 dark:bg-gray-700"></span>
+      </h2>
+
+      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8">
+        {{ range sort $members "key" }}
+          {{ $p := .p }}
+          {{ $link := printf "/authors/%s/" $p.slug | relLangURL }}
+          {{ $aff := "" }}
+          {{ with $p.affiliations }}{{ with index . 0 }}{{ $aff = .name | default . }}{{ end }}{{ end }}
+          <li>
+            <a href="{{ $link }}" class="group flex items-center gap-4">
+              {{ with $p.avatar }}
+                {{ $img := .Fill "192x192 Top q85" }}
+                <img src="{{ $img.RelPermalink }}" alt="{{ $p.title }}" width="96" height="96" loading="lazy"
+                     class="w-20 h-20 shrink-0 rounded-full object-cover ring-1 ring-gray-200 dark:ring-gray-700 grayscale-[30%] group-hover:grayscale-0 transition duration-300">
+              {{ else }}
+                <span class="w-20 h-20 shrink-0 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-xl font-medium text-gray-500">
+                  {{ substr $p.title 0 1 }}
+                </span>
+              {{ end }}
+              <span class="min-w-0">
+                <span class="block font-heading text-xl font-semibold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">{{ $p.title }}</span>
+                {{ with $p.role }}<span class="block text-sm text-gray-600 dark:text-gray-400">{{ . }}</span>{{ end }}
+                {{ with $aff }}<span class="block text-xs text-gray-400 dark:text-gray-500 mt-0.5">{{ . }}</span>{{ end }}
+              </span>
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+    </section>
+    {{ end }}
+  {{ end }}
+
+</div>

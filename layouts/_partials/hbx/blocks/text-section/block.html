@@ -1,0 +1,11 @@
+{{/* BEARLab: two-column text section (eyebrow + title left, prose right) */}}
+
+{{ $page := .wcPage }}
+{{ $content := .wcBlock.content | default dict }}
+
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+{{ partial "bearlab/section-header.html" (dict "content" (dict "subtitle" $content.subtitle "title" $content.title "link" $content.link) "page" $page) }}
+  <div class="lg:col-span-8 prose prose-lg dark:prose-invert max-w-none text-gray-700 dark:text-gray-300 lg:pt-8">
+    {{ with $content.text }}{{ . | $page.RenderString (dict "display" "block") }}{{ end }}
+  </div>
+</div>

@@ -3,85 +3,77 @@
 #   The `weight` parameter defines the order that the links will appear in.
 
 main:
-  - name: Home
-    url: /#top
-    weight: 10
-#  - name: Projects
-#    url: /projects/
-#    weight: 20
   - name: People
     url: /people/
-    weight: 30
-  # - name: Events
-  #   url: /events/
+    weight: 10
   - name: Publications
     url: /publications/
-#  - name: Resources
-#    weight: 40
-#    hasChildren: true
-#  - parent: Resources
-#    name: Blog
-#    url: blog/
+    weight: 20
+  - name: Projects
+    url: /projects/
+    weight: 30
+  - name: News
+    url: /news/
+    weight: 40
+  - name: Open Positions
+    url: /join/
+    weight: 50
 
-# Footer links (4-column layout)
+# Footer links (column layout)
 #   Top-level items become column headings, children become links.
 footer:
-  - name: Product
+  - name: Research
     weight: 10
-  - parent: Product
-    name: Features
-    url: /#features
+  - parent: Research
+    name: Research Areas
+    url: /#research
     weight: 10
-  - parent: Product
-    name: Solutions
-    url: /#solutions
+  - parent: Research
+    name: Publications
+    url: /publications/
     weight: 20
-  - parent: Product
-    name: Pricing
-    url: "#"
+  - parent: Research
+    name: Projects
+    url: /projects/
+    weight: 15
+  - parent: Research
+    name: Code on GitHub
+    url: https://github.com/BEARs-UNITN
     weight: 30
-  - parent: Product
-    name: Changelog
-    url: /changelog/
+
+  - name: About
+    weight: 20
+  - parent: About
+    name: The Lab
+    url: /#about
+    weight: 10
+  - parent: About
+    name: People
+    url: /people/
+    weight: 20
+  - parent: About
+    name: Theses
+    url: /join/#theses
+    weight: 25
+  - parent: About
+    name: Open positions
+    url: /join/
+    weight: 30
+  - parent: About
+    name: News & awards
+    url: /news/
     weight: 40
 
-  - name: Company
-    weight: 20
-  - parent: Company
-    name: About
-    url: "#"
+  - name: Location
+    weight: 30
+  - parent: Location
+    name: Via Sommarive, 9 - Povo (TN)
+    url: https://maps.google.com/?q=Via+Sommarive+9+Povo+Trento
     weight: 10
-  - parent: Company
-    name: Blog
-    url: /blog/
+  - parent: Location
+    name: University of Trento
+    url: https://www.unitn.it/
     weight: 20
-  - parent: Company
-    name: Careers
-    url: "#"
-    weight: 30
-  - parent: Company
-    name: Contact
-    url: "#"
-    weight: 40
-
-  - name: Resources
-    weight: 30
-  - parent: Resources
-    name: Documentation
-    url: "#"
-    weight: 10
-  - parent: Resources
-    name: Help Center
-    url: "#"
-    weight: 20
-  - parent: Resources
-    name: Community
-    url: "#"
-    weight: 30
-  - parent: Resources
-    name: Status
-    url: "#"
-    weight: 40
 
   - name: Legal
     weight: 40
@@ -89,7 +81,3 @@ footer:
     name: Privacy Policy
     url: /privacy/
     weight: 10
-  - parent: Legal
-    name: Terms of Service
-    url: /terms/
-    weight: 20

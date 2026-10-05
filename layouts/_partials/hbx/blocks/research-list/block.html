@@ -1,0 +1,53 @@
+{{/* BEARLab: numbered, editorial list of research areas */}}
+
+{{ $page := .wcPage }}
+{{ $content := .wcBlock.content | default dict }}
+
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+  <header class="max-w-2xl mb-14">
+    {{ with $content.subtitle }}
+    <p class="eyebrow mono mb-4 text-xs font-medium uppercase tracking-[0.14em] text-primary-700 dark:text-primary-300">{{ . }}</p>
+    {{ end }}
+    {{ with $content.title }}
+    <h2 class="text-4xl sm:text-5xl font-medium tracking-tight text-gray-900 dark:text-white">{{ . }}</h2>
+    {{ end }}
+    {{ with $content.text }}
+    <p class="mt-5 text-lg text-gray-600 dark:text-gray-400">{{ . | $page.RenderString }}</p>
+    {{ end }}
+  </header>
+
+  {{ $cols := cond (eq (string $content.columns) "2") "md:grid-cols-2" "md:grid-cols-2 lg:grid-cols-3" }}
+  <ol class="grid grid-cols-1 {{ $cols }} gap-x-12 gap-y-12">
+    {{ range $i, $item := $content.items }}
+    <li class="pt-6 border-t border-gray-300 dark:border-gray-700">
+      <span class="mono block text-xs tabular-nums text-primary-700 dark:text-primary-300">{{ printf "%02d" (add $i 1) }}</span>
+      <h3 class="mt-3 text-2xl font-medium text-gray-900 dark:text-white">{{ if $item.url }}<a href="{{ $item.url | relLangURL }}" class="hover:text-primary-700 dark:hover:text-primary-300">{{ $item.name }}</a>{{ else }}{{ $item.name }}{{ end }}</h3>
+      <p class="mt-3 text-[0.95rem] leading-relaxed text-gray-600 dark:text-gray-400">{{ $item.description }}</p>
+      {{ with $item.theses }}
+      <p class="mono mt-4 text-[0.7rem] uppercase tracking-wide text-gray-500 dark:text-gray-400">Related theses</p>
+      <ul class="mt-2 space-y-1">
+        {{ range . }}{{ with site.GetPage (printf "/thesis/%s" .) }}
+        <li><a href="{{ .RelPermalink }}" class="text-[0.9rem] text-primary-700 dark:text-primary-300 hover:underline underline-offset-4">{{ .Title }} &rarr;</a></li>
+        {{ end }}{{ end }}
+      </ul>
+      {{ end }}
+      {{ with $item.topics }}
+      <ul class="mt-5 flex flex-wrap gap-1.5">
+        {{ range . }}<li class="mono px-2 py-0.5 text-[0.68rem] uppercase tracking-wide rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-400">{{ . }}</li>{{ end }}
+      </ul>
+      {{ end }}
+    </li>
+    {{ end }}
+  </ol>
+
+  {{ with $content.domains }}
+  <div class="mt-16 pt-6 border-t border-gray-300 dark:border-gray-700 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
+    <p class="eyebrow mono text-xs font-medium uppercase tracking-[0.14em] text-primary-700 dark:text-primary-300 shrink-0">{{ $content.domains_title | default "Application domains" }}</p>
+    <ul class="flex flex-wrap gap-2">
+      {{ range . }}<li class="px-3 py-1 rounded-full border border-gray-300 dark:border-gray-700 text-sm text-gray-700 dark:text-gray-300">{{ . }}</li>{{ end }}
+    </ul>
+  </div>
+  {{ end }}
+
+</div>

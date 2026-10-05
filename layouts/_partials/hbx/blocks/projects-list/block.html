@@ -1,0 +1,41 @@
+{{/* BEARLab: research projects from content/project/ */}}
+
+{{ $page := .wcPage }}
+{{ $c := .wcBlock.content | default dict }}
+{{ $items := (where site.RegularPages "Section" "project").ByWeight }}
+{{ with $c.status }}{{ $items = where $items "Params.status" "in" . }}{{ end }}
+{{ $count := $c.count | default 100 }}
+{{ $statusLabel := dict "active" "Active" "completed" "Completed" "upcoming" "Upcoming" }}
+
+{{ if or $items (not $c.hide_if_empty) }}
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+  {{ partial "bearlab/section-header.html" (dict "content" $c "page" $page "level" ($c.heading_level | default "h2")) }}
+
+  <div class="lg:col-span-8">
+    {{ if $items }}
+    <ul class="divide-y divide-gray-300 dark:divide-gray-700 border-y border-gray-300 dark:border-gray-700">
+      {{ range first $count $items }}
+      {{ $p := .Params }}
+      <li class="py-7 grid grid-cols-1 sm:grid-cols-[9rem_1fr] gap-2 sm:gap-6">
+        <div class="mono text-xs text-gray-500 dark:text-gray-400 sm:pt-1.5 space-y-1">
+          {{ with $p.status }}<span class="inline-block px-2 py-0.5 rounded-full border {{ if eq . "active" }}border-primary-700 text-primary-700 dark:border-primary-300 dark:text-primary-300{{ else }}border-gray-300 dark:border-gray-600{{ end }} uppercase tracking-wide text-[0.65rem]">{{ index $statusLabel . | default . }}</span>{{ end }}
+          {{ with $p.period }}<span class="block">{{ . }}</span>{{ end }}
+        </div>
+        <div>
+          <a href="{{ .RelPermalink }}" class="font-heading text-2xl font-semibold text-gray-900 dark:text-white hover:text-primary-700 dark:hover:text-primary-300">{{ .Title }}</a>
+          {{ with .Summary }}<p class="mt-2 text-[0.95rem] leading-relaxed text-gray-600 dark:text-gray-400">{{ . | plainify }}</p>{{ end }}
+          <div class="mono mt-4 flex flex-wrap gap-x-5 gap-y-2 text-xs">
+            {{ with $p.funding }}<span class="text-gray-500 dark:text-gray-400">Funded by {{ . }}</span>{{ end }}
+            {{ with $p.repo }}<a href="{{ . }}" target="_blank" rel="noopener" class="text-primary-700 dark:text-primary-300 hover:underline underline-offset-4">Code &rarr;</a>{{ end }}
+            {{ with $p.website }}<a href="{{ . }}" target="_blank" rel="noopener" class="text-primary-700 dark:text-primary-300 hover:underline underline-offset-4">Website &rarr;</a>{{ end }}
+          </div>
+        </div>
+      </li>
+      {{ end }}
+    </ul>
+    {{ else }}
+    <p class="pt-6 border-t border-gray-300 dark:border-gray-700 text-[0.95rem] text-gray-600 dark:text-gray-400">{{ $c.empty | default "Project pages are coming soon." }}</p>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

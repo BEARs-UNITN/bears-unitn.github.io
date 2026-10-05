@@ -1,0 +1,40 @@
+# BEARLab theme pack: warm paper surfaces with a single ink-blue accent
+hugoblox:
+  meta:
+    format: "hugoblox-theme@1"
+    name: "BEARLab"
+    vendor: "bearlab"
+    version: "1.0.0"
+    license: "MIT"
+
+  type: "dual"
+
+  light:
+    colors:
+      primary: "#1f4e79"
+      secondary: "#9a7b4f"
+      neutral: "stone"
+    surfaces:
+      background: "#fbfaf7"
+      foreground: "#1c1917"
+      header:
+        background: "#fbfaf7"
+        foreground: "#1c1917"
+      footer:
+        background: "#f3f1ec"
+        foreground: "#44403c"
+
+  dark:
+    colors:
+      primary: "#8fb4dd"
+      secondary: "#c9a977"
+      neutral: "stone"
+    surfaces:
+      background: "#121417"
+      foreground: "#e7e5e4"
+      header:
+        background: "#121417"
+        foreground: "#e7e5e4"
+      footer:
+        background: "#0d0f12"
+        foreground: "#a8a29e"

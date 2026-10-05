@@ -1,0 +1,33 @@
+# BEARLab font pack: serif headings, clean sans body
+hugoblox:
+  meta:
+    format: "hugoblox-font@1"
+    name: "BEARLab"
+    vendor: "bearlab"
+    version: "1.0.0"
+    license: "OFL"
+    description: "Bricolage Grotesque headings (loaded in custom.css) with Inter body"
+
+  families:
+    heading: "Inter"
+    body: "Inter"
+    code: "JetBrains Mono"
+
+  weights:
+    heading: [400, 500, 600]
+    body: [400, 500, 600]
+    code: [400]
+
+  leading:
+    heading: 1.15
+    body: 1.7
+    code: 1.5
+
+  tracking:
+    heading: "-0.01em"
+    body: "0"
+
+  variable:
+    heading: false
+    body: true
+    code: false

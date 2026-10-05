@@ -1,0 +1,28 @@
+{{/* BEARLab: row of key facts separated by thin rules.
+     Each item: statistic (fixed text) or count: members | theses (computed at build time), description, optional url. */}}
+
+{{ $page := .wcPage }}
+{{ $content := .wcBlock.content | default dict }}
+
+{{ $members := 0 }}
+{{ range $slug, $_ := partialCached "functions/get_authors_data" $page site.Language.Lang }}
+  {{ $p := partial "functions/get_author_profile" (dict "slug" $slug) }}
+  {{ if $p.user_groups }}{{ $members = add $members 1 }}{{ end }}
+{{ end }}
+{{ $theses := len (where (where site.RegularPages "Section" "thesis") "Params.status" "!=" "assigned") }}
+{{ $counts := dict "members" $members "theses" $theses }}
+
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+  <dl class="grid grid-cols-1 sm:grid-cols-3 border-y border-gray-300 dark:border-gray-700 divide-y sm:divide-y-0 sm:divide-x divide-gray-300 dark:divide-gray-700">
+    {{ range $content.items }}
+    {{ $value := .statistic }}
+    {{ with .count }}{{ $value = index $counts . }}{{ end }}
+    <div class="py-8 sm:px-8 first:sm:pl-0 text-center sm:text-left">
+      <dt class="font-heading text-5xl font-semibold text-gray-900 dark:text-white">{{ $value }}</dt>
+      <dd class="mono mt-2 text-xs uppercase tracking-[0.12em] text-gray-500 dark:text-gray-400">
+        {{ if .url }}<a href="{{ .url | relLangURL }}" class="hover:text-primary-700 dark:hover:text-primary-300 underline-offset-4 hover:underline">{{ .description }} &rarr;</a>{{ else }}{{ .description }}{{ end }}
+      </dd>
+    </div>
+    {{ end }}
+  </dl>
+</div>

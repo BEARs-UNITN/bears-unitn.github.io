@@ -1,0 +1,8 @@
+# BEARLab awards — add one entry per award, newest anywhere (the page sorts by date).
+# Example:
+# - title: Best Paper Award
+#   event: MICCAI 2026
+#   date: 2026-09-20
+#   recipients: [Letizia Girardi, Paolo Giorgini]
+#   url: https://...
+[]

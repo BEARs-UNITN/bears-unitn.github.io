@@ -1,0 +1,9 @@
+schema: hugoblox/author/v1
+slug: selene-tomassini
+title: Selene Tomassini
+role: Assistant Professor
+user_groups:
+  - Researchers
+bio: Research in AI methods, data-driven healthcare, and interdisciplinary biomedical applications.
+affiliations:
+  - name: University of Trento

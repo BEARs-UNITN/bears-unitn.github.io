@@ -1,0 +1,42 @@
+# Shared "Work with us" content, used on the homepage and on /join/.
+# Lab contact address used by all "apply" links below. Leave empty to hide them.
+email: ""
+tracks:
+  - title: Open positions
+    # Add an entry for each active call, e.g.:
+    # - title: PhD position in generative models for disease progression
+    #   url: https://...
+    #   deadline: 2026-12-01
+    calls: []
+    empty: There are no open calls at the moment. New positions are announced in our news.
+  - title: Spontaneous applications
+    text: "No open call that fits? Send us a spontaneous application for PhD, research assistant or postdoc roles. Please include:"
+    checklist:
+      - Your CV
+      - A short motivation letter (max 1 page) saying which of our research areas interests you
+      - Transcript of records (students and recent graduates)
+      - Contacts of 1–2 references
+    note: "Email subject: [BEARLab] Spontaneous application – Name Surname"
+    cta: Send your application
+    # Link to an application form (Google/Microsoft Forms, Tally...). If empty, the button opens an email instead.
+    form_url: ""
+    subject: "[BEARLab] Spontaneous application – "
+  - title: Thesis projects
+    text: Bachelor's and Master's students at the University of Trento can do their thesis with us on AI for medicine, from methods to clinical applications. Write to us with your study programme and the topics you like.
+    cta: Ask about a thesis
+    form_url: ""
+    subject: "[BEARLab] Thesis project – "
+    link:
+      text: See available theses
+      url: /join/#theses
+  - title: Visiting & collaborations
+    text: We welcome visiting PhD students and researchers, and collaborations with clinical partners, hospitals and companies working on medical data.
+    cta: Propose a collaboration
+    form_url: ""
+    subject: "[BEARLab] Collaboration – "
+location_title: Where we are
+address:
+  - BEARLab, University of Trento
+  - Via Sommarive, 9
+  - 38123 Povo (TN), Italy
+map_url: https://maps.google.com/?q=Via+Sommarive+9+Povo+Trento

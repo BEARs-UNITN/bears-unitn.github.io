@@ -1,0 +1,9 @@
+schema: hugoblox/author/v1
+slug: paolo-giorgini
+title: Paolo Giorgini
+role: Full Professor
+user_groups:
+  - Faculty
+bio: Research leadership in digital health, requirements engineering, and intelligent systems for complex biomedical applications.
+affiliations:
+  - name: University of Trento

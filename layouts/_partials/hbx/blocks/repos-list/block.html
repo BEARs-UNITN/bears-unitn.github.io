@@ -1,0 +1,52 @@
+{{/* BEARLab: repositories of the GitHub organisation, fetched at build time */}}
+
+{{ $page := .wcPage }}
+{{ $c := .wcBlock.content | default dict }}
+{{ $org := $c.org | default "BEARs-UNITN" }}
+{{ $exclude := $c.exclude | default slice }}
+{{ $count := $c.count | default 100 }}
+
+{{ $repos := slice }}
+{{ $url := printf "https://api.github.com/orgs/%s/repos?per_page=100&sort=pushed" $org }}
+{{ with try (resources.GetRemote $url) }}
+  {{ with .Err }}
+    {{ warnf "repos-list: could not fetch %s: %s" $url . }}
+  {{ else with .Value }}
+    {{ range . | transform.Unmarshal }}
+      {{ if and (not .fork) (not .archived) (not (in $exclude .name)) }}
+        {{ $repos = $repos | append . }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+  {{ partial "bearlab/section-header.html" (dict "content" $c "page" $page "level" ($c.heading_level | default "h2")) }}
+
+  <div class="lg:col-span-8">
+    {{ if $repos }}
+    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      {{ range first $count $repos }}
+      <li>
+        <a href="{{ .html_url }}" target="_blank" rel="noopener"
+           class="group flex flex-col h-full p-5 rounded-md border border-gray-300 dark:border-gray-700 hover:border-primary-700 dark:hover:border-primary-300 transition-colors">
+          <span class="mono text-xs text-gray-500 dark:text-gray-400">{{ $org }} /</span>
+          <span class="mt-1 font-heading text-lg font-semibold text-gray-900 dark:text-white group-hover:text-primary-700 dark:group-hover:text-primary-300">{{ .name }}</span>
+          {{ with .description }}<span class="mt-2 text-[0.9rem] leading-relaxed text-gray-600 dark:text-gray-400">{{ . }}</span>{{ end }}
+          <span class="mono mt-auto pt-4 flex flex-wrap gap-x-4 gap-y-1 text-[0.7rem] uppercase tracking-wide text-gray-500 dark:text-gray-400">
+            {{ with .language }}<span>{{ . }}</span>{{ end }}
+            <span>★ {{ .stargazers_count }}</span>
+            <span>updated {{ (time .pushed_at).Format "Jan 2006" }}</span>
+          </span>
+        </a>
+      </li>
+      {{ end }}
+    </ul>
+    {{ else }}
+    <p class="pt-6 border-t border-gray-300 dark:border-gray-700 text-[0.95rem] text-gray-600 dark:text-gray-400">{{ $c.empty | default "Our first public repositories are coming soon." }}</p>
+    {{ end }}
+    <a href="https://github.com/{{ $org }}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-8 text-sm font-medium text-primary-700 dark:text-primary-300 hover:underline underline-offset-4">
+      {{ partial "functions/get_icon" (dict "name" "brands/github" "attributes" "class=\"w-4 h-4\"") }} github.com/{{ $org }} &rarr;
+    </a>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+{{/* BEARLab: thesis proposals from content/thesis/ (available first) */}}
+
+{{ $page := .wcPage }}
+{{ $c := .wcBlock.content | default dict }}
+{{ $all := (where site.RegularPages "Section" "thesis").ByWeight }}
+{{ $available := where $all "Params.status" "!=" "assigned" }}
+{{ $assigned := where $all "Params.status" "==" "assigned" }}
+{{ $levelLabel := dict "bsc" "Bachelor" "msc" "Master" "both" "Bachelor / Master" }}
+
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+  {{ partial "bearlab/section-header.html" (dict "content" $c "page" $page "level" ($c.heading_level | default "h2")) }}
+
+  <div class="lg:col-span-8">
+    {{ if $available }}
+    <ul class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {{ range $available }}
+      {{ $p := .Params }}
+      <li class="rounded-md border border-gray-300 dark:border-gray-700">
+        <div class="p-6">
+        <div class="mono flex flex-wrap gap-2 text-[0.65rem] uppercase tracking-wide">
+          <span class="px-2 py-0.5 rounded-full border border-primary-700 text-primary-700 dark:border-primary-300 dark:text-primary-300">Available</span>
+          {{ with $p.level }}<span class="px-2 py-0.5 rounded-full border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-400">{{ index $levelLabel . | default . }}</span>{{ end }}
+          {{ range $p.topics }}<span class="px-2 py-0.5 rounded-full border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-400">{{ . }}</span>{{ end }}
+        </div>
+        <a href="{{ .RelPermalink }}" class="block mt-4 font-heading text-xl font-semibold text-gray-900 dark:text-white hover:text-primary-700 dark:hover:text-primary-300">{{ .Title }}</a>
+        {{ with .Summary }}<p class="mt-2 text-[0.95rem] leading-relaxed text-gray-600 dark:text-gray-400">{{ . | plainify }}</p>{{ end }}
+        <div class="mono mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-gray-500 dark:text-gray-400">
+          {{ with $p.supervisors }}<span>Supervisors: {{ delimit . ", " }}</span>{{ end }}
+          <a href="{{ .RelPermalink }}" class="text-primary-700 dark:text-primary-300 font-medium hover:underline underline-offset-4">Details &rarr;</a>
+          {{ with $p.apply_url | default $c.apply_url }}<a href="{{ . }}" target="_blank" rel="noopener" class="text-primary-700 dark:text-primary-300 font-medium hover:underline underline-offset-4">Apply &rarr;</a>{{ end }}
+        </div>
+        </div>
+      </li>
+      {{ end }}
+    </ul>
+    {{ else }}
+    <p class="pt-6 border-t border-gray-300 dark:border-gray-700 text-[0.95rem] text-gray-600 dark:text-gray-400">{{ $c.empty | default "No thesis proposals are listed right now, but we are happy to discuss your own idea." }}</p>
+    {{ end }}
+
+    {{ with $c.apply_url }}
+    <a href="{{ . }}" target="_blank" rel="noopener" class="inline-block mt-8 px-4 py-2.5 rounded-md bg-primary-700 hover:bg-primary-800 text-white text-sm font-medium">{{ $c.apply_text | default "Propose your own thesis" }} &rarr;</a>
+    {{ end }}
+
+    {{ with $assigned }}
+    <p class="eyebrow mono mt-14 mb-4 text-xs font-medium uppercase tracking-[0.14em] text-gray-500 dark:text-gray-400">Ongoing &amp; past theses</p>
+    <ul class="divide-y divide-gray-300 dark:divide-gray-700 border-y border-gray-300 dark:border-gray-700">
+      {{ range . }}
+      <li class="py-3 flex flex-wrap justify-between gap-2 text-[0.95rem]">
+        <a href="{{ .RelPermalink }}" class="text-gray-800 dark:text-gray-200 hover:text-primary-700 dark:hover:text-primary-300">{{ .Title }}</a>
+        <span class="mono text-xs text-gray-500">{{ with .Params.student }}{{ . }} · {{ end }}{{ index $levelLabel .Params.level | default .Params.level }}</span>
+      </li>
+      {{ end }}
+    </ul>
+    {{ end }}
+  </div>
+</div>

@@ -15,28 +15,22 @@ hugoblox:
     # Site name - shown in navbar, footer, copyright, and browser title by default
     name: "BEARLab"
     logo:
-      image: "assets/media/BEARLab-logo.PNG"
+      image: "assets/media/logo/bearlab-mark-512.png"
     # Legal entity for copyright notices (defaults to name if not set)
-    organization: ""
+    organization: "BEARLab - University of Trento"
     # Schema.org type for structured data
     type: organization                        # person | organization | local_business
     # Short tagline displayed on your site
     tagline: "Biomedicine, Engineering & AI Research Laboratory"
     # Site meta description for search engines and social sharing
-    description: "An interdisciplinary research group at the University of Trento working on biomedicine, engineering, and AI—developing intelligent systems to understand complex biological processes and improve human health."
+    description: "BEARLab (Biomedicine, Engineering & AI Research) at DISI, University of Trento: AI-based clinical decision support systems, multimodal medical imaging, generative models and disease progression forecasting."
     # Social accounts (used for meta tags like Twitter Cards)
     social:
-      twitter: "MakeOwnable"              # Twitter/X handle for Twitter Cards (without @)
+      twitter: ""                         # Twitter/X handle for Twitter Cards (without @)
       # Site-wide social links (rendered in footer, etc.)
       links:
-        - icon: brands/x
-          url: https://x.com/MakeOwnable
         - icon: brands/github
-          url: https://github.com/HugoBlox/kit
-        - icon: brands/discord
-          url: https://discord.gg/z8wNYzb
-        - icon: brands/linkedin
-          url: https://linkedin.com/company/example
+          url: https://github.com/BEARs-UNITN
 
   # ────────────────────────────────────────────────────────────────────────────
   # THEME
@@ -44,9 +38,9 @@ hugoblox:
   # ────────────────────────────────────────────────────────────────────────────
   theme:
     # Mode: 'light', 'dark', or 'system' (follows OS preference)
-    mode: system
+    mode: light
     # Theme pack: name from data/themes/ or { light: "x", dark: "y" } for mix-and-match
-    pack: "default"
+    pack: "bearlab"
     # Optional: Override theme pack colors
     colors:
       primary: ""                       # Tailwind palette name or hex (e.g., "indigo" or "#6366f1")
@@ -72,7 +66,7 @@ hugoblox:
   # ────────────────────────────────────────────────────────────────────────────
   typography:
     # Theme pack: name from data/fonts/
-    pack: "geometric"
+    pack: "bearlab"
 
   # ────────────────────────────────────────────────────────────────────────────
   # LAYOUT
@@ -80,7 +74,7 @@ hugoblox:
   # ────────────────────────────────────────────────────────────────────────────
   layout:
     # Border radius: 'none', 'sm', 'md', 'lg', or 'full'
-    radius: "md"
+    radius: "sm"
     # Spacing density: 'compact', 'comfortable', or 'spacious'
     spacing: "spacious"
     # Avatar shape in author profiles
@@ -97,7 +91,7 @@ hugoblox:
     # Stick to top on scroll
     sticky: true
     # Show logo in navbar
-    show_logo: false
+    show_logo: true
     # Show site title text in navbar
     show_title: true
     # Override navbar title (defaults to identity.name)
@@ -111,9 +105,9 @@ hugoblox:
     language_switcher: true
     # Call-to-action button
     cta:
-      enable: false
-      text: ""
-      url: ""
+      enable: true
+      text: "GitHub"
+      url: "https://github.com/BEARs-UNITN"
 
   # ────────────────────────────────────────────────────────────────────────────
   # FOOTER
@@ -129,7 +123,7 @@ hugoblox:
     title: ""
     language_switcher: false
     # Show social icons from identity.social.links
-    show_social: false
+    show_social: true
     # Custom footer text (HTML supported)
     text: ""
 

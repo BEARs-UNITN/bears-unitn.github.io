@@ -1,0 +1,27 @@
+{{/* BEARLab: latest news as a dated list (posts in content/post/) */}}
+
+{{ $page := .wcPage }}
+{{ $content := .wcBlock.content | default dict }}
+{{ $section := $content.section | default "post" }}
+{{ $count := $content.count | default 3 }}
+{{ $items := where site.RegularPages "Section" $section }}
+
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+  {{ partial "bearlab/section-header.html" (dict "content" $content "page" $page "level" ($content.heading_level | default "h2")) }}
+
+  <ul class="lg:col-span-8 divide-y divide-gray-300 dark:divide-gray-700 border-y border-gray-300 dark:border-gray-700">
+    {{ range first $count $items.ByDate.Reverse }}
+    <li>
+      <a href="{{ .RelPermalink }}" class="group grid grid-cols-1 sm:grid-cols-[9rem_1fr] gap-1 sm:gap-6 py-6">
+        <time datetime="{{ .Date.Format "2006-01-02" }}" class="mono text-xs tabular-nums text-gray-500 dark:text-gray-400 sm:pt-1">{{ .Date.Format "Jan 2, 2006" }}</time>
+        <span>
+          <span class="block font-heading text-2xl text-gray-900 dark:text-white group-hover:text-primary-700 dark:group-hover:text-primary-300 transition-colors">{{ .Title }}</span>
+          {{ with .Summary }}<span class="block mt-1 text-[0.95rem] text-gray-600 dark:text-gray-400">{{ . | plainify }}</span>{{ end }}
+        </span>
+      </a>
+    </li>
+    {{ else }}
+    <li class="py-6 text-gray-500">No news yet.</li>
+    {{ end }}
+  </ul>
+</div>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="BEARLab">
+  
+  <g class="bl-ink" fill="#1f4e79">
+    <circle cx="25" cy="35" r="16"/>
+    <circle cx="95" cy="35" r="16"/>
+    <ellipse cx="60" cy="69" rx="49" ry="42"/>
+  </g>
+  <g class="bl-paper-stroke" fill="none" stroke="#fbfaf7" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="27,76 44,76 51,60 62,96 70,66 76,76 93,76"/>
+  </g>
+  <g class="bl-paper" fill="#fbfaf7">
+    <circle cx="24" cy="76" r="6.5"/>
+    <circle cx="96" cy="76" r="6.5"/>
+  </g>
+</svg>

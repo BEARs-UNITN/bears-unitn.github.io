@@ -1,0 +1,120 @@
+/* BEARLab refinements on top of the Hugo Blox theme */
+
+/* Fonts are loaded here (the theme's generated Google Fonts URL is malformed) */
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=JetBrains+Mono:wght@400;500&display=swap");
+
+:root:root {
+  --hb-font-heading: "Bricolage Grotesque", "Inter", system-ui, sans-serif;
+  --bl-font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.font-heading {
+  font-family: var(--hb-font-heading);
+}
+
+/* Display headings: contemporary grotesk, tight and confident */
+h1:not(.uppercase), h2:not(.uppercase), h3:not(.uppercase),
+.prose h1, .prose h2, .prose h3 {
+  font-family: var(--hb-font-heading);
+  font-weight: 600;
+  letter-spacing: -0.012em;
+  font-variation-settings: "opsz" 72;
+}
+h3:not(.uppercase) {
+  letter-spacing: -0.005em;
+  font-variation-settings: "opsz" 24;
+}
+
+/* Data-style details: labels, indices, dates, tags */
+.mono {
+  font-family: var(--bl-font-mono);
+}
+
+/* Section eyebrows: small accent marker before the label */
+.eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-right: 0.6rem;
+  border-radius: 1px;
+  background: currentColor;
+  vertical-align: 0.05em;
+}
+h2.eyebrow::before { margin-right: -0.4rem; }
+
+/* Navigation: quieter, smaller */
+header nav a {
+  font-weight: 450;
+  letter-spacing: 0.01em;
+}
+
+/* Long-form text: comfortable measure */
+.prose {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+
+/* Hero: left-aligned on the same grid as the other sections, less vertical space */
+#section-hero .relative.isolate {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+@media (min-width: 640px) { #section-hero .relative.isolate { padding: 0 1.5rem; } }
+@media (min-width: 1024px) { #section-hero .relative.isolate { padding: 0 2rem; } }
+#section-hero .relative.isolate > .mx-auto.max-w-2xl {
+  margin-left: 0;
+  max-width: 54rem;
+  padding: 5rem 0 4.5rem;
+}
+#section-hero .text-center { text-align: left; }
+#section-hero .justify-center,
+#section-hero .sm\:justify-center { justify-content: flex-start; }
+#section-hero .text-center p:empty { display: none; }
+#section-hero .text-center p { margin-left: 0; }
+#section-hero h1 {
+  font-size: clamp(2.75rem, 6.5vw, 5.25rem);
+  font-weight: 650;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+#section-hero h1 + p {
+  margin: 1.75rem 0 0;
+  padding: 0;
+  font-size: 1.2rem;
+}
+#section-hero h1 + p + div { margin-top: 2.25rem; }
+#section-hero .sm\:mb-8 { margin-bottom: 1.75rem; }
+#section-hero a { box-shadow: none !important; }
+
+/* Small uppercase labels stay in the body sans, even on headings */
+h2.uppercase, h3.uppercase, h4.uppercase {
+  font-family: var(--hb-font-body);
+}
+
+/* Hero spacing: neutralise theme margins on the title */
+#section-hero h1 { margin: 0; }
+
+/* Wordmark in the navbar */
+.navbar-brand {
+  font-family: var(--hb-font-heading);
+  font-weight: 700;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+}
+
+/* Logo mark in the navbar (inline SVG from assets/media/logo.svg) */
+.navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.navbar-brand svg {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+}
+.dark .navbar-brand .bl-ink { fill: #8fb4dd; }
+.dark .navbar-brand .bl-paper { fill: #121417; }
+.dark .navbar-brand .bl-paper-stroke { stroke: #121417; }

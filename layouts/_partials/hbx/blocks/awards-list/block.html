@@ -1,0 +1,30 @@
+{{/* BEARLab: awards from data/awards.yaml */}}
+
+{{ $page := .wcPage }}
+{{ $c := .wcBlock.content | default dict }}
+{{ $items := sort (hugo.Data.awards | default slice) "date" "desc" }}
+{{ $count := $c.count | default 100 }}
+
+{{ if or $items (not $c.hide_if_empty) }}
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+  {{ partial "bearlab/section-header.html" (dict "content" $c "page" $page "level" ($c.heading_level | default "h2")) }}
+
+  <div class="lg:col-span-8">
+    {{ if $items }}
+    <ul class="divide-y divide-gray-300 dark:divide-gray-700 border-y border-gray-300 dark:border-gray-700">
+      {{ range first $count $items }}
+      <li class="py-5 grid grid-cols-1 sm:grid-cols-[9rem_1fr] gap-1 sm:gap-6">
+        <span class="mono text-xs tabular-nums text-gray-500 dark:text-gray-400 sm:pt-1">{{ (time .date).Format "Jan 2006" }}</span>
+        <div>
+          <p class="font-heading text-lg font-semibold text-gray-900 dark:text-white">{{ if .url }}<a href="{{ .url }}" target="_blank" rel="noopener" class="hover:text-primary-700 dark:hover:text-primary-300">{{ .title }}</a>{{ else }}{{ .title }}{{ end }}</p>
+          <p class="mt-1 text-[0.9rem] text-gray-600 dark:text-gray-400">{{ with .recipients }}{{ delimit . ", " }}{{ end }}{{ with .event }} · {{ . }}{{ end }}</p>
+        </div>
+      </li>
+      {{ end }}
+    </ul>
+    {{ else }}
+    <p class="pt-6 border-t border-gray-300 dark:border-gray-700 text-[0.95rem] text-gray-600 dark:text-gray-400">{{ $c.empty | default "Awards will be listed here." }}</p>
+    {{ end }}
+  </div>
+</div>
+{{ end }}
