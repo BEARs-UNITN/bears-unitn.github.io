@@ -7,3 +7,8 @@ user_groups:
 bio: Research in computational methods, intelligent systems, and biomedical data analysis.
 affiliations:
   - name: University of Trento
+links:
+  - icon: envelope
+    url: mailto:marco.robol@unitn.it
+  - icon: identification
+    url: https://webapps.unitn.it/du/it/Persona/PER0049999/Didattica

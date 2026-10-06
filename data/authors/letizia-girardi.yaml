@@ -14,3 +14,8 @@ bio: |
   She is currently investigating how foundation models and generative AI can be leveraged to simulate disease evolution, support prognosis, and enable more personalized approaches to healthcare.
 affiliations:
   - name: University of Trento
+links:
+  - icon: envelope
+    url: mailto:letizia.girardi@unitn.it
+  - icon: identification
+    url: https://webapps.unitn.it/du/it/Persona/PER0215173/Didattica
