@@ -4,6 +4,26 @@ title: Paolo Giorgini
 role: Full Professor
 user_groups:
   - Faculty
-bio: Research leadership in digital health, requirements engineering, and intelligent systems for complex biomedical applications.
+bio: |
+
+  Paolo Giorgini is a Full Professor at the Department of Information Engineering and Computer Science (DISI) of the University of Trento, where he heads the International PhD School on ICT and previously directed the Bachelor and Master degree programmes in Computer Science. He received his PhD in Information Engineering from the University of Ancona in 1998, and was a visiting researcher at the University of Toronto (2000) and the University of Technology Sydney (2005).
+
+  He leads the Software Engineering, Formal Methods and Security group. His contributions include the development of (security) requirements modelling languages and agent- and goal-oriented techniques for software analysis and development. He has published more than 260 refereed journal and conference papers, founded the International Journal of Agent-Oriented Software Engineering, and received the 10-year Most Influential Paper Award at the IEEE International Requirements Engineering Conference (2015).
+interests:
+  - Requirements engineering
+  - Software security engineering
+  - Agent-oriented software engineering
+  - Conceptual modelling
+  - Multi-agent systems
+education:
+  - degree: PhD in Information Engineering
+    institution: University of Ancona
+    year: 1998
 affiliations:
   - name: University of Trento
+    url: https://www.disi.unitn.it/
+links:
+  - icon: envelope
+    url: mailto:paolo.giorgini@unitn.it
+  - icon: identification
+    url: https://webapps.unitn.it/du/it/Persona/PER0004739/Curriculum
