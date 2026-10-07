@@ -4,7 +4,9 @@ title: Selene Tomassini
 role: Assistant Professor
 user_groups:
   - Researchers
-bio: Research in AI methods, data-driven healthcare, and interdisciplinary biomedical applications.
+bio: |
+
+  Selene is a biomedical engineer and researcher working at the intersection of artificial intelligence and medicine. Her research focuses on the development of AI-based clinical decision support systems, with a particular emphasis on medical imaging. She investigates computational methods to extract meaningful information from biomedical images and translate complex data into clinically relevant insights, supporting clinicians in the interpretation of imaging findings and clinical decision-making. Her work has the broader goal of bridging methodological advances in artificial intelligence and the practical needs of healthcare.
 affiliations:
   - name: University of Trento
 links:
