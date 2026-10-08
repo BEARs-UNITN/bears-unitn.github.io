@@ -8,7 +8,7 @@ sections:
       subtitle: Research
       title: Projects
       heading_level: h1
-      text: Funded projects and long-term research lines of BEARLab. Each project links to its code on GitHub when available.
+      text: Funded projects and long-term research lines of the BEAR group. Each project links to its code on GitHub when available.
     design:
       spacing:
         padding: ["5rem", 0, "6rem", 0]
@@ -17,7 +17,7 @@ sections:
     content:
       subtitle: Open source
       title: Code
-      text: Code, models and tools released by the lab.
+      text: Code, models and tools released by the group.
       link:
         text: All repositories
         url: /code/

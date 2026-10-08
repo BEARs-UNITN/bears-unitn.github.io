@@ -52,7 +52,7 @@
           {{ with $t.form_url }}
           <a href="{{ . }}" target="_blank" rel="noopener" class="inline-block px-3.5 py-2 rounded-md bg-primary-700 hover:bg-primary-800 text-white text-sm font-medium">{{ $t.cta | default "Apply" }} &rarr;</a>
           {{ else }}{{ if and $t.cta $email }}
-          <a href="mailto:{{ $email }}?subject={{ $t.subject | default "BEARLab" | urlquery }}" class="inline-block text-sm font-medium text-primary-700 dark:text-primary-300 hover:underline underline-offset-4">{{ $t.cta }} &rarr;</a>
+          <a href="mailto:{{ $email }}?subject={{ $t.subject | default "BEAR" | urlquery }}" class="inline-block text-sm font-medium text-primary-700 dark:text-primary-300 hover:underline underline-offset-4">{{ $t.cta }} &rarr;</a>
           {{ end }}{{ end }}
           {{ with $t.link }}
           <a href="{{ .url | relLangURL }}" class="inline-block self-center text-sm font-medium text-primary-700 dark:text-primary-300 hover:underline underline-offset-4">{{ .text }} &rarr;</a>

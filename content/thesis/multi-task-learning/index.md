@@ -17,7 +17,7 @@ Development and validation of a framework for diagnostic detection, segmentation
 
 ## What you will do
 
-As in every MSc thesis at BEARLab, you will:
+As in every MSc thesis in the BEAR group, you will:
 
 - develop a **novel module, neural architecture or learning strategy** that addresses an open challenge in medical imaging (not a plain replication of existing methods);
 - **validate** it in one or more clinically relevant application domains, on established medical imaging benchmarks.

@@ -7,7 +7,7 @@ sections:
     content:
       subtitle: People
       title: The team
-      text: Faculty, researchers and PhD students working at BEARLab.
+      text: Faculty, researchers and PhD students in the BEAR group.
       user_groups:
         - Faculty
         - Researchers

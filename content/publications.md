@@ -28,7 +28,7 @@ sections:
     content:
       title: Full Publication List
       text: |
-        Explore all articles, preprints, and research outputs from BEARLab.
+        Explore all articles, preprints, and research outputs from the BEAR group.
       button:
         text: Browse Publications
         url: /publication/

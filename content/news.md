@@ -8,7 +8,7 @@ sections:
       subtitle: News
       title: Latest news
       heading_level: h1
-      text: Papers, talks, events and life at the lab. Add a post by copying `content/post/_example.md`.
+      text: Papers, talks, events and life in the group. Add a post by copying `content/post/_example.md`.
       section: post
       count: 100
     design:

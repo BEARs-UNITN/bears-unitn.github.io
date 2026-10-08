@@ -11,7 +11,7 @@ sections:
         link:
           text: "See the topics"
           url: "/join/#theses"
-      title: Biomedicine, Engineering & AI Research Lab
+      title: Biomedicine, Engineering & AI Research Group
       text: "We design AI-based clinical decision support systems at the University of Trento: models that learn from medical images, clinical and biological data to make diagnosis faster, more accurate and more personal."
       primary_action:
         text: Meet the team
