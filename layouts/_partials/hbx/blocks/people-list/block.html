@@ -24,24 +24,40 @@
     {{ end }}
   </header>
 
+  {{/* A group is either a name or {name, subgroups}; subgroups get their own sub-heading */}}
   {{ range $group := $content.user_groups }}
-    {{ $members := slice }}
-    {{ range $profiles }}
-      {{ if in .user_groups $group }}
-        {{ $family := .name_family | default (index (last 1 (split .title " ")) 0) }}
-        {{ $members = $members | append (dict "p" . "key" (lower $family)) }}
-      {{ end }}
+    {{ $name := $group }}
+    {{ $subs := slice (dict "name" $group "heading" false) }}
+    {{ if reflect.IsMap $group }}
+      {{ $name = $group.name }}
+      {{ $subs = slice }}
+      {{ range $group.subgroups }}{{ $subs = $subs | append (dict "name" . "heading" true) }}{{ end }}
     {{ end }}
 
-    {{ if $members }}
+    {{ $rows := slice }}
+    {{ range $sub := $subs }}
+      {{ $members := slice }}
+      {{ range $profiles }}
+        {{ if in .user_groups $sub.name }}
+          {{ $family := .name_family | default (index (last 1 (split .title " ")) 0) }}
+          {{ $weight := (index hugo.Data.authors .slug).weight | default 99 }}
+          {{ $members = $members | append (dict "p" . "key" (printf "%03d-%s" (int $weight) (lower $family))) }}
+        {{ end }}
+      {{ end }}
+      {{ if $members }}{{ $rows = $rows | append (dict "sub" $sub "members" $members) }}{{ end }}
+    {{ end }}
+
+    {{ if $rows }}
     <section class="mb-14 last:mb-0">
       <h2 class="eyebrow mono flex items-center gap-4 mb-8 text-xs font-medium uppercase tracking-[0.14em] text-primary-700 dark:text-primary-300">
-        {{ $group }}
+        {{ $name }}
         <span class="flex-1 h-px bg-gray-200 dark:bg-gray-700"></span>
       </h2>
 
-      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8">
-        {{ range sort $members "key" }}
+      {{ range $row := $rows }}
+      {{ if $row.sub.heading }}<h3 class="mono mb-5 text-[0.7rem] uppercase tracking-wide text-gray-500 dark:text-gray-400">{{ $row.sub.name }}</h3>{{ end }}
+      <ul class="mb-10 last:mb-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8">
+        {{ range sort $row.members "key" }}
           {{ $p := .p }}
           {{ $link := printf "/authors/%s/" $p.slug | relLangURL }}
           {{ $aff := "" }}
@@ -61,11 +77,13 @@
                 <span class="block font-heading text-xl font-semibold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">{{ $p.title }}</span>
                 {{ with $p.role }}<span class="block text-sm text-gray-600 dark:text-gray-400">{{ . }}</span>{{ end }}
                 {{ with $aff }}<span class="block text-xs text-gray-400 dark:text-gray-500 mt-0.5">{{ . }}</span>{{ end }}
+                {{ with (index hugo.Data.authors $p.slug).bear_role }}<span class="mono inline-block mt-2 px-2 py-0.5 text-[0.68rem] uppercase tracking-wide rounded-full border border-primary-300 dark:border-primary-700 text-primary-700 dark:text-primary-300">{{ . }}</span>{{ end }}
               </span>
             </a>
           </li>
         {{ end }}
       </ul>
+      {{ end }}
     </section>
     {{ end }}
   {{ end }}

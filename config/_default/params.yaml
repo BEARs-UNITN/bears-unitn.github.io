@@ -21,7 +21,7 @@ hugoblox:
     # Schema.org type for structured data
     type: organization                        # person | organization | local_business
     # Short tagline displayed on your site
-    tagline: "Biomedicine, Engineering & AI Research Laboratory"
+    tagline: "Biomedicine, Engineering & AI Research Group"
     # Site meta description for search engines and social sharing
     description: "BEAR (Biomedicine, Engineering & AI Research) at DISI, University of Trento: AI-based clinical decision support systems, multimodal medical imaging, generative models and disease progression forecasting."
     # Social accounts (used for meta tags like Twitter Cards)

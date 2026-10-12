@@ -6,6 +6,9 @@ main:
   - name: People
     url: /people/
     weight: 10
+  - name: Collaborations
+    url: /collaborations/
+    weight: 15
   - name: Publications
     url: /publications/
     weight: 20
@@ -36,10 +39,6 @@ footer:
     name: Projects
     url: /projects/
     weight: 15
-  - parent: Research
-    name: Code on GitHub
-    url: https://github.com/BEARs-UNITN
-    weight: 30
 
   - name: About
     weight: 20
@@ -51,6 +50,10 @@ footer:
     name: People
     url: /people/
     weight: 20
+  - parent: About
+    name: Collaborations
+    url: /collaborations/
+    weight: 22
   - parent: About
     name: Theses
     url: /join/#theses

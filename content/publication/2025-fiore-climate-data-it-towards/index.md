@@ -1,0 +1,38 @@
+---
+title: "Climate Data IT: Towards a National Data Hub for Climate Science"
+authors:
+  - "Sandro Fiore"
+  - "Paola Nassisi"
+  - "Ludovica Sacco"
+  - "Gabriele Padovani"
+  - "Fabrizio Antonio"
+  - "Donatello Elia"
+  - "Italo Epicoco"
+  - "Nicola Giuseppe Marchioro"
+  - "marco-robol"
+  - "Konstantinos Zefkilis"
+  - "Flavio Vella"
+  - "Carolina Sopranzetti"
+  - "Andrea Alessandri"
+  - "Annalisa Cherchi"
+  - "Franco Catalano"
+  - "Gianmaria Sannino"
+  - "Gabriella Scipione"
+  - "Marco Puccini"
+  - "Erika Coppola"
+  - "Ivan Girotto"
+  - "Marco Reale"
+  - "Stefano Salon"
+  - "Antonella Galizia"
+  - "Marcello Iotti"
+  - "paolo-giorgini"
+  - "Hilary J. Oliver"
+  - "Valentine Anantharaj"
+  - "Silvio Gualdi"
+date: "2025-01-01"
+publication_types: ["paper-conference"]
+publication: "*Proceedings of the 4th Italian Conference on Big Data and Data Science (ITADATA 2025)*, CEUR Workshop Proceedings, vol. 4152"
+links:
+  - name: CEUR
+    url: "https://ceur-ws.org/Vol-4152/paper63.pdf"
+---

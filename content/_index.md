@@ -33,9 +33,9 @@ sections:
         - count: theses
           description: Open MSc theses
           url: /join/#theses
-        - statistic: "4"
-          description: Clinical domains
-          url: "#research"
+        - statistic: "8"
+          description: Clinical partners
+          url: /collaborations/
     design:
       spacing:
         padding: [0, 0, 0, 0]
@@ -46,7 +46,7 @@ sections:
       subtitle: About
       title: Why we do it
       text: |
-        We are the **BEAR group** (Biomedicine, Engineering & AI Research) at the Department of Information Engineering and Computer Science (DISI), University of Trento, together with the Diagnostic Imaging Lab. We plan, design and develop **AI-based clinical decision support systems**.
+        We are the **BEAR group** (Biomedicine, Engineering & AI Research) at the Department of Information Engineering and Computer Science (DISI), University of Trento. We plan, design and develop **AI-based clinical decision support systems**.
 
         Our goal is to **reduce** diagnostic delays, doctors' workload and the risk of cognitive biases, and to **increase** diagnostic accuracy, access to care and support in complex decisions. In practice, this means standardizing image interpretation, reducing variability between diagnoses, making sure critical findings are consistently reported, and building the foundation for personalized therapeutic strategies and more targeted patient management.
     design:
@@ -58,7 +58,7 @@ sections:
     content:
       title: What we work on
       subtitle: Research
-      text: Four research lines in medical imaging, from methods to clinical impact. Each one comes with open MSc thesis topics.
+      text: Five research lines in medical imaging, from methods to clinical impact. Each one comes with open MSc thesis topics.
       columns: 2
       items:
         - name: Multimodal learning
@@ -72,13 +72,17 @@ sections:
         - name: Disease progression & prognosis
           description: Forecasting how a disease evolves from longitudinal scans and combining diagnosis with prognostic prediction for personalized care.
           topics: [Longitudinal data, Forecasting, Prognosis]
-          theses: [disease-progression-forecasting, multi-task-learning]
+          theses: [disease-progression-forecasting]
         - name: Trustworthy & explainable AI
           description: Systems that recognise low-quality inputs and uncertain cases, and that explain their outputs with reports grounded in visual evidence.
           topics: [Quality control, Uncertainty, Vision-language]
           theses: [quality-awareness, image-to-text-grounding]
-      domains_title: Clinical domains
-      domains: [Radiology, Neuro-radiology, Neuro-oncology, Ophthalmology]
+        - name: Multi-task learning
+          description: Detection, segmentation, classification, characterization and report generation from volumetric imaging data, learned together in a single model.
+          topics: [Volumetric imaging, Segmentation, Report generation]
+          theses: [multi-task-learning]
+      domains_title: Clinical partners
+      domains: [Neurology, Neurosurgery, Neuroradiology, Radiology, Ophthalmology, Vascular Surgery, Internal Medicine, Medical Physics]
     design:
       spacing:
         padding: ["6rem", 0, "6rem", 0]
@@ -96,7 +100,7 @@ sections:
         url: /projects/
     design:
       spacing:
-        padding: ["2rem", 0, "4rem", 0]
+        padding: [0, 0, 0, 0]
 
   - block: news-list
     id: news
@@ -111,7 +115,6 @@ sections:
     design:
       spacing:
         padding: ["4rem", 0, "6rem", 0]
-
   - block: text-section
     id: opportunities
     content:

@@ -118,3 +118,33 @@ h2.uppercase, h3.uppercase, h4.uppercase {
 .dark .navbar-brand .bl-ink { fill: #8fb4dd; }
 .dark .navbar-brand .bl-paper { fill: #121417; }
 .dark .navbar-brand .bl-paper-stroke { stroke: #121417; }
+
+/* Publications: year filter buttons */
+.pub-years button {
+  padding: 0.3rem 0.8rem;
+  border-radius: 9999px;
+  border: 1px solid var(--color-neutral-300);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--color-neutral-600);
+  transition: color .15s, border-color .15s, background-color .15s;
+}
+.pub-years button:hover {
+  border-color: var(--color-primary-700);
+  color: var(--color-primary-700);
+}
+.pub-years button[aria-pressed="true"] {
+  background-color: var(--color-primary-700);
+  border-color: var(--color-primary-700);
+  color: #fff;
+}
+.dark .pub-years button { border-color: var(--color-neutral-700); color: var(--color-neutral-400); }
+.dark .pub-years button[aria-pressed="true"] { background-color: var(--color-primary-300); border-color: var(--color-primary-300); color: var(--color-neutral-900); }
+
+/* Links inside section intros (e.g. ASUIT, MedicinAI website) */
+.bl-intro a {
+  color: var(--color-primary-700);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.dark .bl-intro a { color: var(--color-primary-300); }

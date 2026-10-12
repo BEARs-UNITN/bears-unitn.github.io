@@ -1,0 +1,89 @@
+{{/* BEARLab: publications from content/publication/, grouped by year (newest first), with year filter buttons */}}
+
+{{ $page := .wcPage }}
+{{ $c := .wcBlock.content | default dict }}
+{{ $fromYear := $c.from_year | default 0 }}
+{{ $pubs := slice }}
+{{ range (where site.RegularPages "Section" "publication").ByDate.Reverse }}
+  {{ if ge .Date.Year $fromYear }}{{ $pubs = $pubs | append . }}{{ end }}
+{{ end }}
+{{ $years := slice }}
+{{ range $pubs }}{{ $years = $years | append .Date.Year }}{{ end }}
+{{ $years = $years | uniq }}
+{{ $typeLabel := dict "article-journal" "Journal" "paper-conference" "Conference" "chapter" "Book chapter" "article" "Preprint" "thesis" "Thesis" }}
+
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+  <header class="max-w-2xl mb-16">
+    {{ with $c.subtitle }}
+    <p class="eyebrow mono mb-4 text-xs font-medium uppercase tracking-[0.14em] text-primary-700 dark:text-primary-300">{{ . }}</p>
+    {{ end }}
+    {{ with $c.title }}
+    <h1 class="text-4xl sm:text-5xl font-medium tracking-tight text-gray-900 dark:text-white">{{ . }}</h1>
+    {{ end }}
+    {{ with $c.text }}
+    <p class="mt-5 text-lg text-gray-600 dark:text-gray-400">{{ . | $page.RenderString }}</p>
+    {{ end }}
+    <p class="mono mt-6 text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400"><span data-pub-count>{{ len $pubs }}</span> papers</p>
+  </header>
+
+  <div class="pub-years mono flex flex-wrap gap-2 mb-12" role="group" aria-label="Filter by year">
+    <button type="button" data-year="all" aria-pressed="true">All</button>
+    {{ range $years }}<button type="button" data-year="{{ . }}" aria-pressed="false">{{ . }}</button>{{ end }}
+  </div>
+
+  {{ range $pubs.GroupByDate "2006" }}
+  <section data-pub-year="{{ .Key }}" data-pub-n="{{ len .Pages }}" class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 mb-14 last:mb-0">
+    <h2 class="lg:col-span-2 mono pt-6 border-t border-gray-300 dark:border-gray-700 text-sm font-medium tabular-nums text-primary-700 dark:text-primary-300">{{ .Key }}</h2>
+
+    <ol class="lg:col-span-10">
+      {{ range .Pages }}
+      {{ $p := .Params }}
+      {{ $doi := "" }}
+      {{ with $p.hugoblox }}{{ with .ids }}{{ $doi = .doi }}{{ end }}{{ end }}
+      {{ $url := "" }}
+      {{ $label := "DOI" }}
+      {{ with $doi }}{{ $url = printf "https://doi.org/%s" . }}{{ else }}{{ with $p.links }}{{ $url = (index . 0).url }}{{ $label = (index . 0).name | default "Link" }}{{ end }}{{ end }}
+      <li class="py-6 border-t border-gray-300 dark:border-gray-700">
+        <h3 class="text-lg font-medium leading-snug text-gray-900 dark:text-white">
+          {{ if $url }}<a href="{{ $url }}" target="_blank" rel="noopener" class="hover:text-primary-700 dark:hover:text-primary-300">{{ .Title }}</a>{{ else }}{{ .Title }}{{ end }}
+        </h3>
+        <p class="mt-2 text-[0.9rem] leading-relaxed text-gray-600 dark:text-gray-400">
+          {{- range $i, $a := $p.authors -}}
+            {{- if $i }}, {{ end -}}
+            {{- with index hugo.Data.authors $a -}}
+              <a href="{{ printf "/authors/%s/" $a | relLangURL }}" class="font-medium text-gray-900 dark:text-white hover:text-primary-700 dark:hover:text-primary-300">{{ .title }}</a>
+            {{- else -}}{{ $a }}{{- end -}}
+          {{- end -}}
+        </p>
+        <div class="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
+          {{ with $p.publication }}<span class="text-[0.9rem] text-gray-700 dark:text-gray-300">{{ . | markdownify }}</span>{{ end }}
+          {{ with $p.publication_types }}{{ with index . 0 }}<span class="mono px-2 py-0.5 text-[0.68rem] uppercase tracking-wide rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-400">{{ index $typeLabel . | default . }}</span>{{ end }}{{ end }}
+          {{ if $url }}<a href="{{ $url }}" target="_blank" rel="noopener" class="mono text-xs font-medium text-primary-700 dark:text-primary-300 hover:underline underline-offset-4">{{ $label }} &nearr;</a>{{ end }}
+        </div>
+      </li>
+      {{ end }}
+    </ol>
+  </section>
+  {{ end }}
+
+</div>
+
+<script>
+  (() => {
+    const buttons = document.querySelectorAll('.pub-years button');
+    const sections = document.querySelectorAll('[data-pub-year]');
+    const count = document.querySelector('[data-pub-count]');
+    buttons.forEach((b) => b.addEventListener('click', () => {
+      const year = b.dataset.year;
+      let n = 0;
+      buttons.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      sections.forEach((s) => {
+        const show = year === 'all' || s.dataset.pubYear === year;
+        s.hidden = !show;
+        if (show) n += Number(s.dataset.pubN);
+      });
+      count.textContent = n;
+    }));
+  })();
+</script>

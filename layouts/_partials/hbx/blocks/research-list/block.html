@@ -10,10 +10,11 @@
     <p class="eyebrow mono mb-4 text-xs font-medium uppercase tracking-[0.14em] text-primary-700 dark:text-primary-300">{{ . }}</p>
     {{ end }}
     {{ with $content.title }}
-    <h2 class="text-4xl sm:text-5xl font-medium tracking-tight text-gray-900 dark:text-white">{{ . }}</h2>
+    {{ $tag := $content.heading_level | default "h2" }}
+    {{ printf "<%s class=\"text-4xl sm:text-5xl font-medium tracking-tight text-gray-900 dark:text-white\">" $tag | safeHTML }}{{ . }}{{ printf "</%s>" $tag | safeHTML }}
     {{ end }}
     {{ with $content.text }}
-    <p class="mt-5 text-lg text-gray-600 dark:text-gray-400">{{ . | $page.RenderString }}</p>
+    <p class="bl-intro mt-5 text-lg text-gray-600 dark:text-gray-400">{{ . | $page.RenderString }}</p>
     {{ end }}
   </header>
 
@@ -21,8 +22,8 @@
   <ol class="grid grid-cols-1 {{ $cols }} gap-x-12 gap-y-12">
     {{ range $i, $item := $content.items }}
     <li class="pt-6 border-t border-gray-300 dark:border-gray-700">
-      <span class="mono block text-xs tabular-nums text-primary-700 dark:text-primary-300">{{ printf "%02d" (add $i 1) }}</span>
-      <h3 class="mt-3 text-2xl font-medium text-gray-900 dark:text-white">{{ if $item.url }}<a href="{{ $item.url | relLangURL }}" class="hover:text-primary-700 dark:hover:text-primary-300">{{ $item.name }}</a>{{ else }}{{ $item.name }}{{ end }}</h3>
+      {{ if ne $content.numbered false }}<span class="mono block text-xs tabular-nums text-primary-700 dark:text-primary-300 mb-3">{{ printf "%02d" (add $i 1) }}</span>{{ end }}
+      <h3 class="text-2xl font-medium text-gray-900 dark:text-white">{{ if $item.url }}{{ $ext := hasPrefix $item.url "http" }}<a href="{{ $item.url | relLangURL }}"{{ if $ext }} target="_blank" rel="noopener"{{ end }} class="hover:text-primary-700 dark:hover:text-primary-300">{{ $item.name }}{{ if $ext }}<span aria-hidden="true" class="ml-1 text-base text-primary-700 dark:text-primary-300">&nearr;</span>{{ end }}</a>{{ else }}{{ $item.name }}{{ end }}</h3>
       <p class="mt-3 text-[0.95rem] leading-relaxed text-gray-600 dark:text-gray-400">{{ $item.description }}</p>
       {{ with $item.theses }}
       <p class="mono mt-4 text-[0.7rem] uppercase tracking-wide text-gray-500 dark:text-gray-400">Related theses</p>

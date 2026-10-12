@@ -1,9 +1,11 @@
 schema: hugoblox/author/v1
 slug: selene-tomassini
 title: Selene Tomassini
-role: Assistant Professor
+role: Assistant Professor (RTD-A)
+bear_role: BEAR Founder
+weight: 2
 user_groups:
-  - Researchers
+  - Assistant Professors
 bio: |
 
   Selene is a biomedical engineer and researcher working at the intersection of artificial intelligence and medicine. Her research focuses on the development of AI-based clinical decision support systems, with a particular emphasis on medical imaging. She investigates computational methods to extract meaningful information from biomedical images and translate complex data into clinically relevant insights, supporting clinicians in the interpretation of imaging findings and clinical decision-making. Her work has the broader goal of bridging methodological advances in artificial intelligence and the practical needs of healthcare.
@@ -14,3 +16,7 @@ links:
     url: mailto:selene.tomassini@unitn.it
   - icon: identification
     url: https://webapps.unitn.it/du/it/Persona/PER0269346/Didattica
+  - icon: academicons/google-scholar
+    url: https://scholar.google.com/citations?user=CXtuS5IAAAAJ
+  - icon: brands/linkedin
+    url: https://www.linkedin.com/in/selene-tomassini-b68a98177/

@@ -1,9 +1,11 @@
 schema: hugoblox/author/v1
 slug: marco-robol
 title: Marco Robol
-role: Assistant Professor
+role: Assistant Professor (RTD-A)
+bear_role: BEAR Member
+weight: 2
 user_groups:
-  - Researchers
+  - Assistant Professors
 bio: Research in computational methods, intelligent systems, and biomedical data analysis.
 affiliations:
   - name: University of Trento
@@ -12,3 +14,7 @@ links:
     url: mailto:marco.robol@unitn.it
   - icon: identification
     url: https://webapps.unitn.it/du/it/Persona/PER0049999/Didattica
+  - icon: academicons/google-scholar
+    url: https://scholar.google.com/citations?user=tjC052EAAAAJ
+  - icon: brands/linkedin
+    url: https://www.linkedin.com/in/marcorobol/

@@ -19,7 +19,7 @@ sections:
     content:
       subtitle: Students
       title: Thesis projects
-      text: "MSc thesis topics from the Diagnostic Imaging Lab · BEAR group. Every thesis develops a novel module, architecture or learning strategy for an open problem in medical imaging, and validates it in a clinically relevant domain: radiology, neuro-radiology, neuro-oncology or ophthalmology. Have your own idea? Propose it to us."
+      text: "MSc thesis topics from the BEAR group. Every thesis develops a novel module, architecture or learning strategy for an open problem in medical imaging, and validates it in a clinically relevant domain: radiology, neuro-radiology, neuro-oncology or ophthalmology. Have your own idea? Propose it to us."
       # Link to the thesis application form (Google/Microsoft Forms, Tally...). Leave empty to hide the button.
       apply_url: ""
       apply_text: Propose your own thesis

@@ -2,8 +2,10 @@ schema: hugoblox/author/v1
 slug: paolo-giorgini
 title: Paolo Giorgini
 role: Full Professor
+bear_role: BEAR Member
+weight: 1
 user_groups:
-  - Faculty
+  - Full Professor
 bio: |
 
   Paolo Giorgini is a Full Professor at the Department of Information Engineering and Computer Science (DISI) of the University of Trento, where he heads the International PhD School on ICT and previously directed the Bachelor and Master degree programmes in Computer Science. He received his PhD in Information Engineering from the University of Ancona in 1998, and was a visiting researcher at the University of Toronto (2000) and the University of Technology Sydney (2005).
@@ -27,3 +29,7 @@ links:
     url: mailto:paolo.giorgini@unitn.it
   - icon: identification
     url: https://webapps.unitn.it/du/it/Persona/PER0004739/Curriculum
+  - icon: academicons/google-scholar
+    url: https://scholar.google.com/citations?user=ulB0WtkAAAAJ
+  - icon: brands/linkedin
+    url: https://www.linkedin.com/in/paolo-giorgini-972b563/

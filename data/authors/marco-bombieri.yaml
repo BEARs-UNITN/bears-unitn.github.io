@@ -1,9 +1,11 @@
 schema: hugoblox/author/v1
 slug: marco-bombieri
 title: Marco Bombieri
-role: Assistant Professor
+role: Assistant Professor (RTD-A)
+bear_role: BEAR Member
+weight: 2
 user_groups:
-  - Researchers
+  - Assistant Professors
 bio: Research in engineering, digital systems, and technologies for real-world biomedical impact.
 affiliations:
   - name: University of Trento
@@ -12,3 +14,7 @@ links:
     url: mailto:marco.bombieri@unitn.it
   - icon: identification
     url: https://webapps.unitn.it/du/it/Persona/PER0301806/Didattica
+  - icon: academicons/google-scholar
+    url: https://scholar.google.com/citations?user=ZiVQsdQAAAAJ
+  - icon: brands/linkedin
+    url: https://www.linkedin.com/in/marco-bombieri-622169219/
