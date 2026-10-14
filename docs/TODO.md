@@ -1,6 +1,6 @@
 # BEARLab website: TODO
 
-Sito: https://bears-unitn.github.io/ · Repo: https://github.com/BEARs-UNITN/bears-unitn.github.io
+Sito: https://bear.disi.unitn.it/ · Repo: https://github.com/BEARs-UNITN/bears-unitn.github.io
 
 Spunta le voci (`[x]`) man mano che vengono completate.
 
@@ -36,7 +36,7 @@ Spunta le voci (`[x]`) man mano che vengono completate.
 
 ## Dominio
 
-- [ ] **bearlab.disi.unitn.it**: inviare la richiesta al supporto tecnico del DISI (record DNS `bearlab.disi.unitn.it CNAME bears-unitn.github.io`, oppure spazio web su server di ateneo)
+- [x] **bear.disi.unitn.it**: record DNS `bear.disi.unitn.it CNAME bears-unitn.github.io` attivato dal DISI
 - [ ] Quando il DNS è attivo: aggiungere il file `CNAME` nel repo, impostare il dominio in *Settings → Pages* e aggiornare `baseURL` in `config/_default/hugo.yaml` (**non prima**, altrimenti il sito va offline)
 
 ## Fatto
