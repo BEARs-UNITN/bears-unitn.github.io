@@ -5,7 +5,7 @@
 -->
 
 <p align="left">
-  <img src="bearlab-mark.png" width="72" alt="BEARLab logo">
+  <img src="bearlab-mark.png" width="72" alt="BEAR logo">
 </p>
 
 # BEARLab · Biomedicine, Engineering & AI Research Lab

@@ -1,4 +1,4 @@
-# BEARLab website: TODO
+# BEAR website: TODO
 
 Sito: https://bear.disi.unitn.it/ · Repo: https://github.com/BEARs-UNITN/bears-unitn.github.io
 
@@ -30,14 +30,17 @@ Spunta le voci (`[x]`) man mano che vengono completate.
 ## GitHub
 
 - [ ] **Profilo dell'organizzazione**: creare un repo pubblico `.github` in BEARs-UNITN e copiare `docs/github-org-profile/README.md` e `bearlab-mark.png` in `profile/`
-- [ ] **Vecchio repo `bear.github.io`**: archiviarlo o eliminarlo (il suo link dà 404)
 - [ ] Per ogni nuovo repo di codice: descrizione, campo *Website* e topics (compaiono in automatico nella pagina Code)
 - [ ] Cancellare il branch locale `site-redesign` (già unito in `main`)
 
 ## Dominio
 
 - [x] **bear.disi.unitn.it**: record DNS `bear.disi.unitn.it CNAME bears-unitn.github.io` attivato dal DISI
-- [ ] Quando il DNS è attivo: aggiungere il file `CNAME` nel repo, impostare il dominio in *Settings → Pages* e aggiornare `baseURL` in `config/_default/hugo.yaml` (**non prima**, altrimenti il sito va offline)
+- [x] Dominio impostato in *Settings → Pages*, file `CNAME` nel repo, `baseURL` aggiornato in `config/_default/hugo.yaml`
+- [ ] **Enforce HTTPS**: spuntarlo in *Settings → Pages* (il certificato è già attivo)
+- [ ] **Website dell'organizzazione**: cambiarlo da `https://bears-unitn.github.io` a `https://bear.disi.unitn.it`
+- [ ] **Website del repo**: cambiarlo da `http://bear.disi.unitn.it/` a `https://bear.disi.unitn.it/`
+- [ ] **Nome del repo**: rinominarlo da `bear.github.io` a `bears-unitn.github.io` (*Settings → General → Repository name*), per allinearlo al record DNS `bear.disi.unitn.it CNAME bears-unitn.github.io`. Con il nome attuale i vecchi link `https://bears-unitn.github.io/...` danno 404 invece di reindirizzare al dominio
 
 ## Fatto
 
@@ -47,3 +50,4 @@ Spunta le voci (`[x]`) man mano che vengono completate.
 - [x] Indirizzo confermato: Via Sommarive 9, Povo (TN)
 - [x] Repo rinominato in `bears-unitn.github.io`, sito su https://bears-unitn.github.io/
 - [x] Website dell'organizzazione e homepage del repo aggiornati
+- [x] Vecchio repo `bear.github.io` eliminato
