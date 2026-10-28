@@ -7,8 +7,6 @@ level: msc
 topics: ["Generative models", "Image synthesis", "Missing data"]
 supervisors: []
 weight: 2
-image:
-  caption: "Overview of the thesis topic"
 ---
 
 ## The problem

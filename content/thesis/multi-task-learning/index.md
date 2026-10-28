@@ -7,8 +7,6 @@ level: msc
 topics: ["Multi-task learning", "Segmentation", "Prognosis"]
 supervisors: []
 weight: 7
-image:
-  caption: "Overview of the thesis topic"
 ---
 
 ## The problem

@@ -7,8 +7,6 @@ level: msc
 topics: ["Vision-language models", "Report generation", "Grounding"]
 supervisors: []
 weight: 5
-image:
-  caption: "Overview of the thesis topic"
 ---
 
 ## The problem

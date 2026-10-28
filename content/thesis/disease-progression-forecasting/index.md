@@ -7,8 +7,6 @@ level: msc
 topics: ["Disease progression", "Longitudinal data", "Forecasting"]
 supervisors: []
 weight: 4
-image:
-  caption: "Overview of the thesis topic"
 ---
 
 ## The problem

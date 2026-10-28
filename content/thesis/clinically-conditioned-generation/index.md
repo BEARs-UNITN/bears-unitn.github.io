@@ -7,8 +7,6 @@ level: msc
 topics: ["Generative AI", "Diffusion models", "Conditioning"]
 supervisors: []
 weight: 3
-image:
-  caption: "Overview of the thesis topic"
 ---
 
 ## The problem

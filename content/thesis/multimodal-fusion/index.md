@@ -7,8 +7,6 @@ level: msc
 topics: ["Multimodal learning", "Data fusion", "MRI · CT · PET"]
 supervisors: []
 weight: 1
-image:
-  caption: "Overview of the thesis topic"
 ---
 
 ## The problem

@@ -7,8 +7,6 @@ level: msc
 topics: ["Quality control", "Uncertainty", "Trustworthy AI"]
 supervisors: []
 weight: 6
-image:
-  caption: "Overview of the thesis topic"
 ---
 
 ## The problem
