@@ -158,8 +158,17 @@ h2.uppercase, h3.uppercase, h4.uppercase {
 
 /* Hero compare slider (hero-split block, content.compare) */
 .bl-compare { position: relative; width: 100%; max-width: 30rem; margin: 0 auto; user-select: none; -webkit-user-select: none; }
-.bl-compare img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.bl-compare img, .bl-cine-frame { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.bl-cine-frame { background-repeat: no-repeat; background-size: 100% 100%; }
 .bl-compare-after { clip-path: inset(0 0 0 var(--split)); }
+.bl-cine-toggle {
+  position: absolute; right: 0.25rem; bottom: 0.25rem; width: 32px; height: 32px; border-radius: 50%;
+  display: grid; place-items: center; font-size: 0.7rem; line-height: 1; cursor: pointer;
+  color: var(--color-primary-700, #1d4a73); background: rgb(255 255 255 / 0.85);
+  border: 1px solid rgb(0 0 0 / 0.08); box-shadow: 0 1px 4px rgb(0 0 0 / 0.15);
+}
+.dark .bl-cine-toggle { color: #8fb4dd; background: rgb(18 20 23 / 0.85); border-color: rgb(255 255 255 / 0.12); }
+.bl-cine-toggle:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
 .bl-compare-handle {
   position: absolute; top: 0; bottom: 0; left: var(--split); width: 2px; margin-left: -1px;
   background: var(--color-primary-700, #1d4a73); pointer-events: none;

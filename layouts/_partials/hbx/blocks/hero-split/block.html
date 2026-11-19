@@ -30,35 +30,87 @@
   </div>
 
   {{ with $c.compare }}
-  {{ $before := (resources.Get (printf "media/%s" .before)).Process "webp q88" }}
-  {{ $after := (resources.Get (printf "media/%s" .after)).Process "webp q88" }}
+  {{/* Cine compare: CT and mask sprite sheets (frames on a cols x cols grid, `per` frames per sheet),
+       played in sync, with a drag-to-compare divider. Files: media/<ct|seg>-poster.webp, -a.webp, -b.webp */}}
+  {{ $ctPoster := resources.Get (printf "media/%s-poster.webp" .ct) }}
+  {{ $segPoster := resources.Get (printf "media/%s-poster.webp" .seg) }}
+  {{ $ctA := resources.Get (printf "media/%s-a.webp" .ct) }}{{ $ctB := resources.Get (printf "media/%s-b.webp" .ct) }}
+  {{ $segA := resources.Get (printf "media/%s-a.webp" .seg) }}{{ $segB := resources.Get (printf "media/%s-b.webp" .seg) }}
   <figure class="lg:col-span-5">
-    <div class="bl-compare" style="--split: 50%; aspect-ratio: {{ $before.Width }} / {{ $before.Height }};" data-bl-compare>
-      <img src="{{ $before.RelPermalink }}" width="{{ $before.Width }}" height="{{ $before.Height }}" alt="{{ .before_alt }}" fetchpriority="high" draggable="false">
-      <img src="{{ $after.RelPermalink }}" width="{{ $after.Width }}" height="{{ $after.Height }}" alt="{{ .after_alt }}" class="bl-compare-after" draggable="false">
-      <span class="bl-compare-handle" aria-hidden="true"></span>
+    <div class="bl-compare bl-cine" style="--split: 50%; aspect-ratio: {{ .frame_w }} / {{ .frame_h }};"
+         data-bl-cine data-count="{{ .count }}" data-cols="{{ .cols }}" data-per="{{ .per }}" data-start="{{ .start | default 0 }}" data-fps="{{ .fps | default 12 }}"
+         data-ct="{{ $ctA.RelPermalink }}|{{ $ctB.RelPermalink }}" data-seg="{{ $segA.RelPermalink }}|{{ $segB.RelPermalink }}">
+      <div class="bl-cine-frame" data-layer="ct" role="img" aria-label="{{ .ct_alt }}" style="background-image: url({{ $ctPoster.RelPermalink }});"></div>
+      <div class="bl-cine-frame bl-compare-after" data-layer="seg" role="img" aria-label="{{ .seg_alt }}" style="background-image: url({{ $segPoster.RelPermalink }});"></div>
       <input type="range" min="0" max="100" value="50" step="0.5" class="bl-compare-range" aria-label="{{ .label | default "Compare" }}">
+      <span class="bl-compare-handle" aria-hidden="true"></span>
+      <button type="button" class="bl-cine-toggle" aria-label="Pause slice animation" hidden>&#10074;&#10074;</button>
     </div>
     {{ with .caption }}<figcaption class="bl-compare-caption">{{ . | $page.RenderString }}</figcaption>{{ end }}
   </figure>
   <script>
   (function () {
-    document.querySelectorAll("[data-bl-compare]").forEach(function (box) {
-      var r = box.querySelector(".bl-compare-range");
-      function set(v) { box.style.setProperty("--split", v + "%"); }
-      r.addEventListener("input", function () { box.dataset.touched = "1"; set(r.value); });
-      // one gentle sweep on load to show that it moves
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    document.querySelectorAll("[data-bl-cine]").forEach(function (box) {
+      var r = box.querySelector(".bl-compare-range"), btn = box.querySelector(".bl-cine-toggle");
+      var layers = { ct: box.querySelector('[data-layer="ct"]'), seg: box.querySelector('[data-layer="seg"]') };
+      var sheets = { ct: box.dataset.ct.split("|"), seg: box.dataset.seg.split("|") };
+      var N = +box.dataset.count, C = +box.dataset.cols, PER = +box.dataset.per, fps = +box.dataset.fps;
+      var i = +box.dataset.start, dir = 1, timer = null, playing = !reduce, visible = true, ready = false;
+
+      function setSplit(v) { box.style.setProperty("--split", v + "%"); }
+      r.addEventListener("input", function () { box.dataset.touched = "1"; setSplit(r.value); });
+
+      function show(n) {
+        var s = Math.floor(n / PER), k = n % PER, col = k % C, row = Math.floor(k / C);
+        var pos = (col / (C - 1) * 100) + "% " + (row / (C - 1) * 100) + "%";
+        ["ct", "seg"].forEach(function (key) {
+          var el = layers[key];
+          el.style.backgroundImage = "url(" + sheets[key][s] + ")";
+          el.style.backgroundSize = (C * 100) + "% " + (C * 100) + "%";
+          el.style.backgroundPosition = pos;
+        });
+      }
+      function tick() {
+        if (i >= N - 1) dir = -1; else if (i <= 0) dir = 1;
+        i += dir; show(i);
+      }
+      function sync() {
+        var run = ready && playing && visible && !document.hidden;
+        if (run && !timer) timer = setInterval(tick, 1000 / fps);
+        if (!run && timer) { clearInterval(timer); timer = null; }
+        btn.innerHTML = playing ? "&#10074;&#10074;" : "&#9654;";
+        btn.setAttribute("aria-label", playing ? "Pause slice animation" : "Play slice animation");
+      }
+      btn.addEventListener("click", function () { playing = !playing; sync(); });
+      document.addEventListener("visibilitychange", sync);
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(function (e) { visible = e[0].isIntersecting; sync(); }).observe(box);
+      }
+
+      // load the sprite sheets after the page, then start
+      function load() {
+        var urls = sheets.ct.concat(sheets.seg), left = urls.length;
+        urls.forEach(function (u) {
+          var im = new Image();
+          im.onload = im.onerror = function () { if (--left === 0) { ready = true; show(i); btn.hidden = false; sync(); } };
+          im.src = u;
+        });
+      }
+      if (document.readyState === "complete") load(); else window.addEventListener("load", load);
+
+      // one gentle sweep of the divider to show that it moves
+      if (reduce) return;
       var t0 = null, dur = 1800;
-      function step(ts) {
+      function sweep(ts) {
         if (box.dataset.touched) return;
         if (t0 === null) t0 = ts;
         var k = Math.min(1, (ts - t0) / dur);
         var v = 50 + 28 * Math.sin(k * Math.PI * 2) * (1 - k);
-        set(v); r.value = v;
-        if (k < 1) requestAnimationFrame(step);
+        setSplit(v); r.value = v;
+        if (k < 1) requestAnimationFrame(sweep);
       }
-      setTimeout(function () { requestAnimationFrame(step); }, 600);
+      setTimeout(function () { requestAnimationFrame(sweep); }, 600);
     });
   })();
   </script>
