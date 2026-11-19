@@ -40,6 +40,10 @@ sections:
           url: https://www.asuit.tn.it/entita-organizzative/unita-operativa-medicina-interna-trento
           description: Prof. Vito Racanelli & colleagues
           topics: [Trento]
+        - name: Maxillofacial Surgery
+          url: https://www.asuit.tn.it/entita-organizzative/unita-operativa-chirurgia-maxillo-facciale
+          description: Prof. Lorenzo Trevisiol & colleagues
+          topics: [Trento]
         - name: Medical Physics
           url: https://www.asuit.tn.it/entita-organizzative/unita-operativa-fisica-sanitaria
           description: Dr. Annalisa Trianni & colleagues
@@ -72,6 +76,30 @@ sections:
           url: https://mrcaslab.hsites.harvard.edu/people/marco-zenati
           description: Professor of Surgery, Harvard Medical School; Chief of Cardiac Surgery, VA Boston Healthcare System
           topics: [Boston]
+        - name: Aldo Marzullo
+          url: https://www.deib.polimi.it/eng/people/details/1609148
+          description: Assistant Professor, Politecnico di Milano
+          topics: [Milan]
+        - name: Joana Cristo Santos
+          url: https://www.cienciavitae.pt/1210-2B8E-C215
+          description: Assistant Professor, Universidade de Lisboa
+          topics: [Lisbon]
+        - name: Ali Dewan
+          url: https://www.athabascau.ca/science-and-technology/our-people/ali-dewan.html
+          description: Associate Professor, Athabasca University
+          topics: [Athabasca]
+        - name: Alessia Sarica
+          url: https://alessiasarica.com/
+          description: Associate Professor, Magna Graecia University of Catanzaro
+          topics: [Catanzaro]
+        - name: Henning Müller
+          url: https://www.hevs.ch/en/collaborateurs/muller-1609
+          description: Professor, HES-SO & University of Geneva
+          topics: [Sierre, Geneva]
+        - name: Katja Bühler
+          url: https://www.vrvis.at/
+          description: VRVis Vienna Research Center for Visual Computing
+          topics: [Vienna]
     design:
       spacing:
         padding: ["3rem", 0, "7rem", 0]
