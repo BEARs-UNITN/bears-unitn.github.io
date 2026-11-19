@@ -4,7 +4,8 @@ date: 2023-10-24
 type: landing
 
 sections:
-  - block: hero
+  - block: hero-split
+    id: section-hero
     content:
       announcement:
         text: "New MSc thesis topics are online."
@@ -19,13 +20,16 @@ sections:
       secondary_action:
         text: Thesis topics
         url: /join/#theses
+      image:
+        filename: hero-brain.png
+        alt: 3D rendering of a brain MRI with the segmented lesion highlighted in grey
     design:
       spacing:
         padding: [0, 0, 0, 0]
 
   - block: facts
     content:
-      # count: members | theses are computed automatically at build time
+      # count: members | theses | clinical are computed automatically at build time
       items:
         - count: members
           description: Members
