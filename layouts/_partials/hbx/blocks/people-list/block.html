@@ -78,6 +78,7 @@
                 {{ with $p.role }}<span class="block text-sm text-gray-600 dark:text-gray-400">{{ . }}</span>{{ end }}
                 {{ with $aff }}<span class="block text-xs text-gray-400 dark:text-gray-500 mt-0.5">{{ . }}</span>{{ end }}
                 {{ with (index hugo.Data.authors $p.slug).bear_role }}<span class="mono inline-block mt-2 px-2 py-0.5 text-[0.68rem] uppercase tracking-wide rounded-full border border-primary-300 dark:border-primary-700 text-primary-700 dark:text-primary-300">{{ . }}</span>{{ end }}
+                {{ with (index hugo.Data.authors $p.slug).extra_role }}<span class="mono block w-fit mt-1.5 px-2 py-0.5 text-[0.68rem] uppercase tracking-wide rounded-full border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-300">{{ . }}</span>{{ end }}
               </span>
             </a>
           </li>

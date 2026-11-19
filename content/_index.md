@@ -59,7 +59,7 @@ sections:
     content:
       title: What we work on
       subtitle: Research
-      text: Five research lines in medical imaging, from methods to clinical impact. Each one comes with open MSc thesis topics.
+      text: Six research lines in medical imaging, from methods to clinical impact. Each one comes with open MSc thesis topics.
       columns: 2
       items:
         - name: Multimodal learning
@@ -82,6 +82,9 @@ sections:
           description: Detection, segmentation, classification, characterization and report generation from volumetric imaging data, learned together in a single model.
           topics: [Volumetric imaging, Segmentation, Report generation]
           theses: [multi-task-learning]
+        - name: Agentic AI
+          description: Autonomous AI agents that plan, use tools and collaborate to support clinical workflows, from data retrieval to multi-step diagnostic reasoning, with attention to reliability and systemic risks.
+          topics: [LLM agents, Multi-agent systems, Clinical workflows]
       domains_title: Clinical partners
       domains: [Neurology, Neurosurgery, Neuroradiology, Radiology, Ophthalmology, Vascular Surgery, Internal Medicine, Medical Physics]
     design:
