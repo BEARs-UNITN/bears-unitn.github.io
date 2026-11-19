@@ -155,3 +155,25 @@ h2.uppercase, h3.uppercase, h4.uppercase {
 .bl-hero .bl-hero-actions { margin-top: 2.25rem; }
 /* Transparent PNG: sits directly on the page in both themes */
 .bl-hero-image { max-width: 30rem; margin: 0 auto; }
+
+/* Hero compare slider (hero-split block, content.compare) */
+.bl-compare { position: relative; width: 100%; max-width: 30rem; margin: 0 auto; user-select: none; -webkit-user-select: none; }
+.bl-compare img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.bl-compare-after { clip-path: inset(0 0 0 var(--split)); }
+.bl-compare-handle {
+  position: absolute; top: 0; bottom: 0; left: var(--split); width: 2px; margin-left: -1px;
+  background: var(--color-primary-700, #1d4a73); pointer-events: none;
+}
+.bl-compare-handle::after {
+  content: "⟷"; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--color-primary-700, #1d4a73); color: #fff; font-size: 0.95rem; font-weight: 700;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.25);
+}
+.dark .bl-compare-handle, .dark .bl-compare-handle::after { background: #8fb4dd; color: #121417; }
+.bl-compare-range {
+  position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize;
+  -webkit-appearance: none; appearance: none;
+}
+.bl-compare-range:focus-visible + .bl-compare-handle, .bl-compare:focus-within .bl-compare-handle::after { outline: 2px solid currentColor; outline-offset: 2px; }
+.bl-compare-caption { margin-top: 0.9rem; text-align: center; font-size: 0.8rem; color: var(--color-neutral-500, #6b7280); }

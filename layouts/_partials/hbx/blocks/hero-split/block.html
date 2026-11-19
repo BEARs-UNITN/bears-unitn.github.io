@@ -29,10 +29,45 @@
     {{ end }}
   </div>
 
+  {{ with $c.compare }}
+  {{ $before := (resources.Get (printf "media/%s" .before)).Process "webp q88" }}
+  {{ $after := (resources.Get (printf "media/%s" .after)).Process "webp q88" }}
+  <figure class="lg:col-span-5">
+    <div class="bl-compare" style="--split: 50%; aspect-ratio: {{ $before.Width }} / {{ $before.Height }};" data-bl-compare>
+      <img src="{{ $before.RelPermalink }}" width="{{ $before.Width }}" height="{{ $before.Height }}" alt="{{ .before_alt }}" fetchpriority="high" draggable="false">
+      <img src="{{ $after.RelPermalink }}" width="{{ $after.Width }}" height="{{ $after.Height }}" alt="{{ .after_alt }}" class="bl-compare-after" draggable="false">
+      <span class="bl-compare-handle" aria-hidden="true"></span>
+      <input type="range" min="0" max="100" value="50" step="0.5" class="bl-compare-range" aria-label="{{ .label | default "Compare" }}">
+    </div>
+    {{ with .caption }}<figcaption class="bl-compare-caption">{{ . | $page.RenderString }}</figcaption>{{ end }}
+  </figure>
+  <script>
+  (function () {
+    document.querySelectorAll("[data-bl-compare]").forEach(function (box) {
+      var r = box.querySelector(".bl-compare-range");
+      function set(v) { box.style.setProperty("--split", v + "%"); }
+      r.addEventListener("input", function () { box.dataset.touched = "1"; set(r.value); });
+      // one gentle sweep on load to show that it moves
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      var t0 = null, dur = 1800;
+      function step(ts) {
+        if (box.dataset.touched) return;
+        if (t0 === null) t0 = ts;
+        var k = Math.min(1, (ts - t0) / dur);
+        var v = 50 + 28 * Math.sin(k * Math.PI * 2) * (1 - k);
+        set(v); r.value = v;
+        if (k < 1) requestAnimationFrame(step);
+      }
+      setTimeout(function () { requestAnimationFrame(step); }, 600);
+    });
+  })();
+  </script>
+  {{ else }}
   {{ with $c.image }}{{ with resources.Get (printf "media/%s" .filename) }}
   {{ $img := .Process "webp q90" }}
   <figure class="lg:col-span-5">
     <img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="{{ $c.image.alt }}" class="bl-hero-image w-full h-auto" fetchpriority="high">
   </figure>
   {{ end }}{{ end }}
+  {{ end }}
 </div>

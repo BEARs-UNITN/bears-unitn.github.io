@@ -20,9 +20,16 @@ sections:
       secondary_action:
         text: Thesis topics
         url: /join/#theses
-      image:
-        filename: hero-brain.png
-        alt: 3D rendering of a brain MRI with the segmented lesion highlighted in grey
+      # image:
+      #   filename: hero-brain.png
+      #   alt: 3D rendering of a brain MRI with the segmented lesion highlighted in grey
+      compare:
+        before: aura-ct.png
+        after: aura-mask.png
+        before_alt: Axial slice of a synthetic abdominal CT angiography generated with AURA
+        after_alt: The same slice with its anatomical segmentation mask in colour
+        label: Drag to compare the synthetic CT with its segmentation
+        caption: "Synthetic CT and its segmentation, generated with **AURA**. Drag to compare."
     design:
       spacing:
         padding: [0, 0, 0, 0]
