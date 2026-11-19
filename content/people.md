@@ -24,7 +24,7 @@ sections:
       subtitle: Collaborations
       title: Who we work with
       text: |
-        Our research is carried out together with eight clinical units of the Azienda Sanitaria Universitaria Integrata del Trentino (ASUIT) and with academic partners from other groups and universities.
+        Our research is carried out together with the clinical units of the Azienda Sanitaria Universitaria Integrata del Trentino (ASUIT) and with academic partners from other groups and universities.
       link:
         text: See our collaborations
         url: /collaborations/

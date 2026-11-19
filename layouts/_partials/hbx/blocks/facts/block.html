@@ -1,5 +1,5 @@
 {{/* BEARLab: row of key facts separated by thin rules.
-     Each item: statistic (fixed text) or count: members | theses (computed at build time), description, optional url. */}}
+     Each item: statistic (fixed text) or count: members | theses | clinical (computed at build time), description, optional url. */}}
 
 {{ $page := .wcPage }}
 {{ $content := .wcBlock.content | default dict }}
@@ -10,7 +10,13 @@
   {{ if $p.user_groups }}{{ $members = add $members 1 }}{{ end }}
 {{ end }}
 {{ $theses := len (where (where site.RegularPages "Section" "thesis") "Params.status" "!=" "assigned") }}
-{{ $counts := dict "members" $members "theses" $theses }}
+{{ $clinical := 0 }}
+{{ with site.GetPage "/collaborations" }}
+  {{ range .Params.sections }}
+    {{ if eq .id "clinical-partners" }}{{ $clinical = len .content.items }}{{ end }}
+  {{ end }}
+{{ end }}
+{{ $counts := dict "members" $members "theses" $theses "clinical" $clinical }}
 
 <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
   <dl class="grid grid-cols-1 sm:grid-cols-3 border-y border-gray-300 dark:border-gray-700 divide-y sm:divide-y-0 sm:divide-x divide-gray-300 dark:divide-gray-700">

@@ -33,7 +33,7 @@ sections:
         - count: theses
           description: Open MSc theses
           url: /join/#theses
-        - statistic: "8"
+        - count: clinical
           description: Clinical partners
           url: /collaborations/
     design:
