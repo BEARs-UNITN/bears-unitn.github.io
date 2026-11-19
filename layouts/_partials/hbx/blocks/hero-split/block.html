@@ -6,7 +6,8 @@
 {{ $c := .wcBlock.content | default dict }}
 
 <div class="bl-hero max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-  <div class="lg:col-span-7">
+  {{ $hasMedia := or $c.image $c.compare }}
+  <div class="{{ if $hasMedia }}lg:col-span-7{{ else }}lg:col-span-12{{ end }}"{{ if not $hasMedia }} style="grid-column: 1 / -1; max-width: 56rem;"{{ end }}>
     {{ with $c.announcement }}{{ if .text }}
     <div class="bl-hero-announcement mb-7 inline-flex flex-wrap items-center gap-x-2 rounded-full px-3 py-1 text-sm leading-6 text-gray-600 dark:text-gray-300 ring-1 ring-gray-900/10 dark:ring-gray-300">
       <span>{{ .text | $page.RenderString }}</span>
