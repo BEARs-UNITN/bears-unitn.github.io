@@ -153,11 +153,5 @@ h2.uppercase, h3.uppercase, h4.uppercase {
 .bl-hero { padding-top: 5rem; padding-bottom: 4.5rem; }
 .bl-hero .bl-hero-text { margin-top: 1.75rem; font-size: 1.2rem; max-width: 40rem; }
 .bl-hero .bl-hero-actions { margin-top: 2.25rem; }
-/* Light mode: blend the image's white background into the page */
-.bl-hero-image { mix-blend-mode: multiply; }
-/* Dark mode: show it as a white figure card */
-.dark .bl-hero-image {
-  mix-blend-mode: normal;
-  background: #fff;
-  border-radius: 1rem;
-}
+/* Transparent PNG: sits directly on the page in both themes */
+.bl-hero-image { max-width: 30rem; margin: 0 auto; }

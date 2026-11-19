@@ -30,7 +30,7 @@
   </div>
 
   {{ with $c.image }}{{ with resources.Get (printf "media/%s" .filename) }}
-  {{ $img := .Resize "1000x webp q85" }}
+  {{ $img := .Process "webp q90" }}
   <figure class="lg:col-span-5">
     <img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="{{ $c.image.alt }}" class="bl-hero-image w-full h-auto" fetchpriority="high">
   </figure>
