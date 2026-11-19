@@ -12,7 +12,7 @@ sections:
         link:
           text: "See the topics"
           url: "/join/#theses"
-      title: Biomedicine, Engineering & AI Research Group
+      title: "**B**iomedicine, **E**ngineering & **A**I **R**esearch Group"
       text: "We design AI-based clinical decision support systems at the University of Trento: models that learn from medical images, clinical and biological data to make diagnosis faster, more accurate and more personal."
       primary_action:
         text: Meet the team

@@ -186,3 +186,7 @@ h2.uppercase, h3.uppercase, h4.uppercase {
 }
 .bl-compare-range:focus-visible + .bl-compare-handle, .bl-compare:focus-within .bl-compare-handle::after { outline: 2px solid currentColor; outline-offset: 2px; }
 .bl-compare-caption { margin-top: 0.9rem; text-align: center; font-size: 0.8rem; color: var(--color-neutral-500, #6b7280); }
+
+/* Hero title: the initials that spell BEAR, in the logo colour */
+#section-hero h1 strong { font-weight: inherit; color: #1f4e79; }
+.dark #section-hero h1 strong { color: #8fb4dd; }
