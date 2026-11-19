@@ -78,7 +78,7 @@ sections:
           topics: [Boston]
         - name: Aldo Marzullo
           url: https://www.deib.polimi.it/eng/people/details/1609148
-          description: Assistant Professor, Politecnico di Milano
+          description: Researcher, Politecnico di Milano
           topics: [Milan]
         - name: Joana Cristo Santos
           url: https://www.cienciavitae.pt/1210-2B8E-C215
@@ -94,11 +94,11 @@ sections:
           topics: [Catanzaro]
         - name: Henning Müller
           url: https://www.hevs.ch/en/collaborateurs/muller-1609
-          description: Professor, HES-SO & University of Geneva
+          description: Full Professor, HES-SO Valais-Wallis; Titular Professor, University of Geneva
           topics: [Sierre, Geneva]
         - name: Katja Bühler
           url: https://www.vrvis.at/
-          description: VRVis Vienna Research Center for Visual Computing
+          description: Scientific Director and Head of Biomedical Image Informatics, VRVis Vienna Research Center for Visual Computing
           topics: [Vienna]
     design:
       spacing:
